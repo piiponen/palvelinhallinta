@@ -1,1 +1,10 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+    <title>Etusivu - Harjoitus 0: Oman palvelimen sekä domainin perustaminen</title>
+</head>
 

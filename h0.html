@@ -107,7 +107,7 @@
         </div>
 
         <p class="p2">
-        Virtuaalipalvelimen kirjautumistavaksi valittiin SSH-avaimet. Tämä tehtiin sekä koulukannettavani että koti-pöytäkoneeni Windows-järjestelmän Terminalissa komennolla "ssh-keygen". Molemmat avaimet tallensin 
+        Virtuaalipalvelimen kirjautumistavaksi valittiin SSH-avaimet. Tämä tehtiin sekä koulukannettavani että koti-pöytäkoneeni Windows-järjestelmän Terminalissa komennolla "ssh-keygen". Molemmat avaimet tallensin UpCloud-SSH avainketjuun.
         </p>
         
         <div class="kuvat-container">
@@ -116,15 +116,21 @@
         </div>
 
         <p class="p2">
-        Palvelin oli näin luotu, ja muodostin siihen yhteyden Terminalin kautta komennolla "ssh root@94.237.106.231"
-        </p>
+        Palvelin oli näin luotu, ja muodostin siihen yhteyden Terminalin kautta komennolla "ssh root@94.237.106.231" (ssh + käyttäjä + @ + palvelimen osoite). 
+        </p> 
         <div class="kuvat-container">
             <img src="Kuvat/h0_kuva6.jpg" class="kuvat" alt="kuva"> 
         </div>
+        
         <p class="p2">
-    
+        Lisäsin sinne uuden käyttäjän sudo-oikeuksilla komennolla "adduser piipo" ja "usermod -aG sudo piipo". 
+        Loin uuden "authorized_keys"-tiedoston tämän käyttäjän kotihakemistoon, ja talletin sinne oman kannettavani SSH-avaimen (nano authorized_keys).
+        Asensin päivitykset (sudo apt-get update, sudo apt-get upgrade), palomuurin (apt-get install ufw) sekä apache-webpalvelimen (sudo apt install apache). Konfiguroin palomuurin päästämään läpi 22/tcp-portin liikenteen, ja aktivoin sen komennolla "ufw enable".
         </p>
 
+        <p class="p2"> 
+        Tässä kohtaan meni jokin vikaan, sillä en päässyt kirjautumaan piipo-käyttäjällä palvelimelleni. Tätä en ehtinyt jäädä selvittelemään, joten suljin yhteyden.
+        </p>
 
 
 </body>

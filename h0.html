@@ -8,40 +8,122 @@
     <title>Palvelinten hallinta-tehtävät</title>
     <style>
         
+        .kuvat {
+            width: 500px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        .kuvat-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 60px auto;
+        }
+
         body {
             background-color: white;
+            font-family: arial, verdana;
         }
-        h1 {
-            text-align: center;
-            font-size: 250%;
-        }
-        h2 {
-            text-align: center;
-            font-size: 150%;
-        }
-        h3 {
-            text-align: center;
-            font-size: 125%;
-        }
-        p {
+        .p2 {
             text-align:center;
+            margin-bottom: 15px;
+            margin-top: 15px;
+
         }
         
     </style>
 </head>
+
 <body>
 
-    <br>
-    <h1>Harjoitus 0: Oikeasti netissä</h1>
-    <br>
-    <h2>x) "H4 Tehtävät" - Tiivistelmä omintakeisesti</h2>
-    <h3>"Vuokraa pilvipalvelin"</h3>
-        <ul style="text-align: center; list-style-position: inside; font-size: 105%;">
-            <li>UpCloud-alustan valitsin itsekkin oman virtuaalipalvelimen "pystyttämiseen", sillä heidän kokeilujaksonsa runsaat ominaisuudet sekä hinnoittelu kiinnittivät huomioni reiluudellaan</li>
-            
-        
+    <h1 style="text-align: center;font-size: 250%;margin-top: 30px;">Harjoitus 0: Oikeasti netissä</h1>
+    
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">x) "Niemi 2025: H4 Tehtävät" - Tiivistelmä omintakeisesti</h2>
+    
+    <h3 style="text-align: center;font-size: 130%;margin-bottom: 15px;">"Artikkeli: First Steps on a New Virtual Private Server"</h3>
+        <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+            <li>Käytettiinkö artikkelissa tosiaan Ubuntu Server-käyttöjärjestelmää Debian:n sijasta?</li>
+        </ul>
+    
+    <h3 style="text-align: center;font-size: 130%;margin-bottom: 15px;">"Vuokraa pilvipalvelin"</h3>
+        <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+            <li>UpCloud-alustan valitsin itsekkin oman virtuaalipalvelimen "pystyttämiseen", sillä heidän kokeilujaksonsa runsaat ominaisuudet sekä "reilu" hinnoittelu kiinnittivät huomioni.</li>
+            <li>Hyvä huomio GDRP-asetuksesta.</li>
+            <li>Hyvä huomata että hinnoittelu on ollut vuosi sitten noinkin edullista opiskelijalle/ensikertalaiselle.</li>
+        </ul>
+    
+    <h3 style="text-align: center;font-size: 130%;margin-bottom: 15px;">"Virtuaalipalvelimen alkutoimet" ja "web-palvelin"</h3>
+        <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+            <li>Oman käyttäjän lisäys, oikeuksien muuttaminen, SSH-yhteyden muodostaminen sekä "root"-käyttäjän lukitseminen käytiinkin läpi demonstroiden tunnilla.</li>
+            <li>Palomuurin asennus & käyttöönotto sekä index-sivun tekeminen jäi itse toteutettavaksi.</li>
+        </ul>
+        <br>
+    
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">x) "Partanen 2025: Harjoitus 5: Nimekäs: a) Nimi" - Tiivistelmä</h2>
+        <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+            <li>Onpas edullinen hinta (0.83€) verkkotunnukselle yksityisyyssuojan kanssa.</li>
+            <li>Selkeästi kirjoitettu osio.</li>
         </ul>
 
+    <h4 style="text-align: center;font-size: 130%;margin-top: 60px;">b-e) Oman palvelimen sekä verkkotunnuksen vuokraaminen</h4>
+        <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 30px;">Lokaali ympäristö:</h2>
+            <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+                <li>OS: Windows 11 25H2</li> 
+                <li>CPU: Intel i7 14700KF</li>
+                <li>GPU: AMD RX 9070 XT</li>
+                <li>RAM: DDR5 32 GB</li>
+            </ul>
+        <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 30px;">Virtuaaliympäristö:</h2>
+            <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+                <li>OS: Debian 13 "Trixie"</li>
+                <li>CPU: 1 Core</li>
+                <li>RAM: 1 Gb</li>
+                <li>Storage: 10 GB</li>
+            </ul>
+
+        <p class="p2">
+        Aloitin siis valitsemalla kotimaisen "UpCloud"-pilvipalvelutarjoajan, sillä heidän kokeilujaksonsa kiinnitti huomioni. Ensikertalainen saisi 30 päivän kokeilussa 500 euron edestä krediittejä, joilla kustannetaan aloituspaketin kulut.
+        </p>
+        <p class="p2">
+        Rekisteröidyin UpCloud:n palveluun, syötin tarvittavat tiedot henkilöllisyyden varmistamiseen ja loin uuden palvelimen "Deploy now"-napilla. 
+        Tälle määritin sijainniksi "FI-HEL2"-datakeskuksen, sillä luulisin tällä olevan vähemmmän latenssia itselleni. Edullisin "Starter"-suunnitelma olisi juuri passeli yhdelle VPS-palvelimelle näin alkuun, sillä valitsemalla sopivan käyttöjärjestelmän olisivat myös laitteistovaatimukset "kevyitä".
+        </p>
+        
+        <div class="kuvat-container">
+            <img src="Kuvat/h0_kuva0.jpg" class="kuvat" alt="kuva"> 
+            <img src="Kuvat/h0_kuva1.jpg" class="kuvat" alt="kuva">
+        </div>
+
+        <p class="p2">
+        Valitun "Starter"-suunnitelman mukaan palvelimella olisi 10 GB:n verran tallennustilaa. Automaattisia varmuuskopioita en valinnut, sillä tarvetta ei ollut. 
+        Käyttöjärjestelmäksi Debian 13 (Trixie) ja verkkoasetuksista oletuksena päällä olevat asetukset.
+        </p>
+        
+        <div class="kuvat-container">
+            <img src="Kuvat/h0_kuva2.jpg" class="kuvat" alt="kuva"> 
+            <img src="Kuvat/h0_kuva3.jpg" class="kuvat" alt="kuva">
+        </div>
+
+        <p class="p2">
+        Virtuaalipalvelimen kirjautumistavaksi valittiin SSH-avaimet. Tämä tehtiin sekä koulukannettavani että koti-pöytäkoneeni Windows-järjestelmän Terminalissa komennolla "ssh-keygen". Molemmat avaimet tallensin 
+        </p>
+        
+        <div class="kuvat-container">
+            <img src="Kuvat/h0_kuva4.jpg" class="kuvat" alt="kuva"> 
+            <img src="Kuvat/h0_kuva5.jpg" class="kuvat" alt="kuva">
+        </div>
+
+        <p class="p2">
+        Palvelin oli näin luotu, ja muodostin siihen yhteyden Terminalin kautta komennolla "ssh root@94.237.106.231"
+        </p>
+        <div class="kuvat-container">
+            <img src="Kuvat/h0_kuva6.jpg" class="kuvat" alt="kuva"> 
+        </div>
+        <p class="p2">
+    
+        </p>
 
 
 

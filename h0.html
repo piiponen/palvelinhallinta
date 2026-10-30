@@ -19,7 +19,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin: 50px auto;
+            margin: 20px auto;
         }
 
         body {
@@ -28,9 +28,11 @@
         }
         .p2 {
             text-align:center;
-            margin-bottom: 15px;
-            margin-top: 15px;
-
+            margin: 20px;
+        }
+        .p3 {
+            text-align:center;
+            margin: 20px;
         }
         
     </style>
@@ -38,37 +40,31 @@
 
 <body>
 
-    <h1 style="text-align: center;font-size: 250%;margin-top: 30px;">Harjoitus 0: Oikeasti netissä</h1>
+    <h1 style="text-align: center;font-size: 250%;margin: 50px;">Harjoitus 0: Oikeasti netissä</h1>
     
-    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">x) "Niemi 2025: H4 Tehtävät" - Tiivistelmä omintakeisesti</h2>
+    <h2 style="text-align: center;font-size: 150%;margin: 15px;">x) "Niemi 2025: H4 Tehtävät" - Tiivistelmä omintakeisesti</h2>
     
-    <h3 style="text-align: center;font-size: 130%;margin-bottom: 15px;">"Artikkeli: First Steps on a New Virtual Private Server"</h3>
-        <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
-            <li>Käytettiinkö artikkelissa tosiaan Ubuntu Server-käyttöjärjestelmää Debian:n sijasta?</li>
-        </ul>
-    
-    <h3 style="text-align: center;font-size: 130%;margin-bottom: 15px;">"Vuokraa pilvipalvelin"</h3>
+    <h3 style="text-align: center;font-size: 130%;margin: 15px;">"Vuokraa pilvipalvelin"</h3>
         <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
             <li>UpCloud-alustan valitsin itsekkin oman virtuaalipalvelimen "pystyttämiseen", sillä heidän kokeilujaksonsa runsaat ominaisuudet sekä "reilu" hinnoittelu kiinnittivät huomioni.</li>
             <li>Hyvä huomio GDRP-asetuksesta.</li>
             <li>Hyvä huomata että hinnoittelu on ollut vuosi sitten noinkin edullista opiskelijalle/ensikertalaiselle.</li>
         </ul>
     
-    <h3 style="text-align: center;font-size: 130%;margin-bottom: 15px;">"Virtuaalipalvelimen alkutoimet" ja "web-palvelin"</h3>
+    <h3 style="text-align: center;font-size: 130%;margin: 15px;">"Virtuaalipalvelimen alkutoimet" ja "web-palvelin"</h3>
         <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
             <li>Oman käyttäjän lisäys, oikeuksien muuttaminen, SSH-yhteyden muodostaminen sekä "root"-käyttäjän lukitseminen käytiinkin läpi demonstroiden tunnilla.</li>
             <li>Palomuurin asennus & käyttöönotto sekä index-sivun tekeminen jäi itse toteutettavaksi.</li>
         </ul>
-        <br>
     
-    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">x) "Partanen 2025: Harjoitus 5: Nimekäs: a) Nimi" - Tiivistelmä</h2>
+    <h2 style="text-align: center;font-size: 150%;margin: 15px;">x) "Partanen 2025: Harjoitus 5: Nimekäs: a) Nimi" - Tiivistelmä</h2>
         <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
             <li>Onpas edullinen hinta (0.83€) verkkotunnukselle yksityisyyssuojan kanssa. Lisäpalvelut, kuten SSL-suojaus, VPN-tilaus tai "Premium DNS" eivät olleet tarpeellisia.</li>
             <li>Poistettiin ylimäär. CNAME-tietue, ja lisättiin oikeat osoitteet jotta "aleksipartanen.space" ohjaa virtuaalipalvelimen web-sivulle.</li>
             <li>Selkeästi kirjoitettu osio.</li>
         </ul>
 
-    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">a) Paikallisen virtuaalikoneen luominen sekä käyttöönotto.</h2>
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 30px;">a) Paikallisen virtuaalikoneen luominen sekä käyttöönotto.</h2>
         
             <p class="p2">
             VirtualBox olikin jo valmiiksi asennettuna omaan lokaaliin ympäristöön, joten hain Debian 13-levykuvan kurssin "Oheismateriaalia"-osiosta ja sen iskin VirtualBox:in luomalla uuden koneen "New"-napista.
@@ -196,7 +192,7 @@
             Vajaan 20 minuutin jälkeen palvelin oli luotu ja käynnisssä. Muodostin siihen ensin yhteyden kannettavani Windows-käyttöjärjestelmän Terminalin kautta komennolla "ssh root@94.237.106.231" (ssh + käyttäjä + @ + palvelimen osoite).
             </p> 
 
-    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">c) Sudo-käyttäjä, palomuuri sekä päivitykset.</h2>
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">c-d) Sudo-käyttäjä, palomuuri, päivitykset sekä Apache.</h2>
 
             <p class="p2">
             Ensimmäisen yhteyden onnistuneen muodostamisen jälkeen vaihdoin laitetta "deb_vm1"-virtuaalikoneeseen, jossa toteutin täysin saman operaation. Näin saatiin talletettua molempien koneiden julkinen SSH-avain.
@@ -205,7 +201,11 @@
             Loin palvelimelle uuden käyttäjän komennolla <i>adduser piipo</i>, ja ylensin sen sudo-käyttäjien ryhmään komennolla <i>usermod -aG sudo piipo</i>.
             Seuraavaksi kopioitiin SSH-asetukset (sis. tallennetut avainparit) <i>root</i>-käyttäjä -> <i>piipo</i>-käyttäjä, sillä jälkimmäistä tultaisiin käyttämään pääkäyttäjänä jatkossa.
             <br>
-            Eli <i>sudo cp -rv /root/.ssh/ /home/piipo/</i> sekä lisäksi vielä kotihakemiston omistajuuden muuttaminen käyttäjälle "piipo": <i>sudo chown -R piipo:piipo /home/piipo</i>.
+            Eli <i>sudo cp -rv /root/.ssh/ /home/piipo/</i> sekä lisäksi vielä kotihakemiston omistajuuden muuttaminen: <i>sudo chown -R piipo:piipo /home/piipo</i>.
+            
+            </p>
+            <p class="p2">
+            Kokeilin muodostaa yhteyden uudella käyttäjällä, ja sehän toimi. Tässä kohtaa suljin yhteyden ja uudelleenkäynnistin palvelimen täysin uudestaan UpCloud-serverinhallintapaneelista.    
             </p>
 
         <div class="kuvat-contti">
@@ -216,26 +216,14 @@
             Asensin päivitykset (<i>sudo apt-get update |sudo apt-get upgrade</i>), palomuurin (<i>apt-get install ufw</i>) sekä apache-webpalvelimen (<i>sudo apt install apache</i>). 
             Konfiguroin palomuurin päästämään läpi SSH:n oletusportin (22) liikenteen, ja suoritin komennon "ufw enable" joka ottaa palomuurin käyttöön seuraavassa uudelleenkäynnistyksessä.
             </p>
-            <p class="p2">
-            Seuraavaksi vielä kopioitiin tallennetut SSH-avaimet
-
-            </p>  
-
-        <div class="kuvat-contti">
-            <img src="Kuvat/vps_rootdisable0.png" class="kuvat" alt="kuva"> 
-        </div>
-
-            <p class="p2"> 
-        
-            </p>
 
     <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">Lähdeluettelo</h2>
-            <p class="p2">
-            T.Punnala, 2025: h1-installing-linux-md | Luettavissa https://github.com/punnalathomas/linux-course/blob/main/h1-installing-linux.md | Luettu 29.10.2026
-
+            <p class="p3">
+            Punnala, T. 2025: h1-installing-linux-md | Luettavissa: https://github.com/punnalathomas/linux-course/blob/main/h1-installing-linux.md | Luettu 29.10.2026 <br>
+            Karvinen, T. 2026: SSH public key - Login without password | Luettavissa: https://terokarvinen.com/ssh-public-key-login-without-password/ | Luettu 30.10.2026 <br>
+            Partanen, A. 2025: Harjoitus 5: Nimekäs: a)Nimi | Luettavissa: https://partanennn.github.io/linux-servers/practices/fifth-week.html | Luettu 24.10.2026 <br>
             </p>
 
-    
 </body>
 
 </html>

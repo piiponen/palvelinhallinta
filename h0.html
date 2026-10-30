@@ -131,7 +131,7 @@
             <img src="Kuvat/deb13_vbox_inst10.png" class="kuvat" alt="kuva"> 
         </div>
 
-    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">b-e) Oman palvelimen sekä verkkotunnuksen vuokraaminen</h2>
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">b) Oman palvelimen vuokraaminen</h2>
         
     <h3 style="text-align: center;font-size: 130%;margin-bottom: 20px;margin-top: 30px;">Paikallinen virtuaaliympäristö (deb_vm1):</h3>
             <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
@@ -182,7 +182,9 @@
         </div>
 
             <p class="p2">
-            Virtuaalipalvelimen kirjautumistavaksi valittiin SSH-avaimet, jotka olin luonut "debadmin"-virtuaalikoneella . Tämä tehtiin sekä koulukannettavani että koti-pöytäkoneeni Windows-järjestelmän Terminalissa komennolla "ssh-keygen". Molemmat avaimet tallensin UpCloud-SSH avainketjuun.
+            Virtuaalipalvelimen kirjautumistavaksi valittiin SSH-avainparit, jotka olin luonut "debadmin"-virtuaalikoneella sekä koulukannettavallani jo aikaisemmin. 
+            <br> <i>ssh-keygen</i>-komento siis luo avainparin, jota käytetään yhdistävän laitteen tunnistamiseen & "tallentamiseen" tunnettujen laitteiden tietokantaan, sekä myöhemmin kirjautumiseen salasanan sijasta.
+            Molempien laitteiden avainparit tallensin UpCloud:n SSH-avainketjuun, ja aloitin palvelimen luomisen klikkaamalla "Deploy"
             </p>
         
         <div class="kuvat-contti">
@@ -191,19 +193,37 @@
         </div>
 
             <p class="p2">
-            Palvelin oli näin luotu, ja muodostin siihen yhteyden Terminalin kautta komennolla "ssh root@94.237.106.231" (ssh + käyttäjä + @ + palvelimen osoite). 
+            Vajaan 20 minuutin jälkeen palvelin oli luotu ja käynnisssä. Muodostin siihen ensin yhteyden kannettavani Windows-käyttöjärjestelmän Terminalin kautta komennolla "ssh root@94.237.106.231" (ssh + käyttäjä + @ + palvelimen osoite).
             </p> 
-        
-        <div class="kuvat-contti">
-            <img src="Kuvat/h0_kuva6.jpg" class="kuvat" alt="kuva"> 
-        </div>
-        
+
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">c) Sudo-käyttäjä, palomuuri sekä päivitykset.</h2>
+
             <p class="p2">
-            Lisäsin sinne uuden käyttäjän sudo-oikeuksilla komennolla "adduser piipo" ja "usermod -aG sudo piipo". 
-            Loin uuden "authorized_keys"-tiedoston tämän käyttäjän kotihakemistoon, ja talletin sinne oman kannettavani SSH-avaimen (nano authorized_keys).
-            Asensin päivitykset (sudo apt-get update, sudo apt-get upgrade), palomuurin (apt-get install ufw) sekä apache-webpalvelimen (sudo apt install apache). 
-            Konfiguroin palomuurin päästämään läpi SSH:n oletusportin (22/tcp) liikenteen, ja aktivoin sen komennolla "ufw enable".
+            Ensimmäisen yhteyden onnistuneen muodostamisen jälkeen vaihdoin laitetta "deb_vm1"-virtuaalikoneeseen, jossa toteutin täysin saman operaation. Näin saatiin talletettua molempien koneiden julkinen SSH-avain.
             </p>
+            <p class="p2">
+            Loin palvelimelle uuden käyttäjän komennolla <i>adduser piipo</i>, ja ylensin sen sudo-käyttäjien ryhmään komennolla <i>usermod -aG sudo piipo</i>.
+            Seuraavaksi kopioitiin SSH-asetukset (sis. tallennetut avainparit) <i>root</i>-käyttäjä -> <i>piipo</i>-käyttäjä, sillä jälkimmäistä tultaisiin käyttämään pääkäyttäjänä jatkossa.
+            <br>
+            Eli <i>sudo cp -rv /root/.ssh/ /home/piipo/</i> sekä lisäksi vielä kotihakemiston omistajuuden muuttaminen käyttäjälle "piipo": <i>sudo chown -R piipo:piipo /home/piipo</i>.
+            </p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/vps_rootdisable1.png" class="kuvat" alt="kuva">
+        </div>
+
+            <p class="p2">
+            Asensin päivitykset (<i>sudo apt-get update |sudo apt-get upgrade</i>), palomuurin (<i>apt-get install ufw</i>) sekä apache-webpalvelimen (<i>sudo apt install apache</i>). 
+            Konfiguroin palomuurin päästämään läpi SSH:n oletusportin (22) liikenteen, ja suoritin komennon "ufw enable" joka ottaa palomuurin käyttöön seuraavassa uudelleenkäynnistyksessä.
+            </p>
+            <p class="p2">
+            Seuraavaksi vielä kopioitiin tallennetut SSH-avaimet
+
+            </p>  
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/vps_rootdisable0.png" class="kuvat" alt="kuva"> 
+        </div>
 
             <p class="p2"> 
         

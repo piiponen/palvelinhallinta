@@ -14,12 +14,12 @@
             height: auto;
             object-fit: contain;
         }
-        .kuvat-container {
+        .kuvat-contti {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin: 60px auto;
+            gap: 10px;
+            margin: 50px auto;
         }
 
         body {
@@ -68,16 +68,87 @@
             <li>Selkeästi kirjoitettu osio.</li>
         </ul>
 
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">a) Paikallisen virtuaalikoneen luominen sekä käyttöönotto.</h2>
+        
+            <p class="p2">
+            VirtualBox olikin jo valmiiksi asennettuna omaan lokaaliin ympäristöön, joten hain Debian 13-levykuvan kurssin "Oheismateriaalia"-osiosta ja sen iskin VirtualBox:in luomalla uuden koneen "New"-napista.
+            Koneelle annoin nimeksi "deb_vm1", osoitin sen käyttämään ladattua levykuvaa sekä ruksasin pois "Proceed with unattended installation" jotta voin itse päättää resurssien allokoimisesta virtuaalilaitteelle. 
+            </p>
+
+     <div class="kuvat-contti">
+            <img src="Kuvat/deb13_vbox_inst0.png" class="kuvat" alt="kuva"> 
+            <img src="Kuvat/deb13_vbox_inst1.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/deb13_vbox_inst2.png" class="kuvat" alt="kuva">
+        </div>
+
+            <p class="p2">
+            Tuota pikaa oli kone luotu. Tuplaklikkasin sen käyntiin ja valitsin suoraan käyttöjärjestelmän asennuksen, kokeilematta sitä ensin. Nämä asetukset määrittelin laitteelle:
+            </p>
+            <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+                <li>Language: English</li>
+                <li>Location: Other</li>
+                <li>Continent or region: Europe</li>
+                <li>Country: Finland</li>
+                <li>Configure locales: en_US.UTF-8</li>
+                <li>Keyboard layout: Finnish</li>
+                <li>Hostname: deb_vm1</li>
+                <li>Domain name: <i>tyhjä</i> (Käyttäjä voi määrittää tämän halutessaan myöhemmin)</li>
+                <li>Root account password: <i>tyhjä</i> (SSH-avainkirjautumista tulemme käyttämään jokatapauksessa)</li>
+                <li>New user full name & username: debadmin</li>
+                <li>Password: **********************</li>
+                <li>Disk partitioning: Use entire disk</li>
+            </ul>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/deb13_vbox_inst3.png" class="kuvat" alt="kuva"> 
+            <img src="Kuvat/deb13_vbox_inst4.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/deb13_vbox_inst5.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/deb13_vbox_inst6.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/deb13_vbox_inst7.png" class="kuvat" alt="kuva">
+        </div>
+
+            <p class="p2">
+            Ja käyttöjärjestelmän asentuminen sekä uudelleenkäynnistys tapahtui lopulta vajaassa viidessä minuutissa. Kirjauduin sisään tunnuksillani, avasin Terminalin ja ajoin "sudo apt-get update"-komennon hakeakseni päivitykset. 
+            Tämä kuitenkin antoi virheen, sillä paketinhallinta yritti hakea päivityksiä oletuksena levykuvalta jolta käyttöjärjestelmä oli asennettu. 
+            </p>
+            <p class="p2">
+            Tässä käytin apuna Punnalan raporttia (T.Punnala 2025: Tietokone ja käyttöjärjestelmä"), joka ohjeisti korjaamaan Nano-tekstieditorilla "/etc/apt/sources.list"-tiedoston.
+            Eli <i>sudo nano /etc/apt/sources.list</i> ja muutetaan lähde kommentiksi laittamalla risuaita-merkki lähteen "deb cdrom" eteen. Sitten korjaukset manuaalisesti kirjoittaen ja Ctrl+S + Ctrl+X.
+            </p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/deb13_vbox_inst8.png" class="kuvat" alt="kuva"> 
+            <img src="Kuvat/deb13_vbox_inst9.png" class="kuvat" alt="kuva">
+        </div>
+
+            <p class="p2">
+            Lopuksi vielä ne päivitykset ajamalla <i>sudo apt-get update |sudo apt-get -y dist-upgrade</i>. 
+            Näitten lisäksi palomuurin asennus komennolla <i>sudo apt-get -y install ufw</i>, ja käyttöönotto samantien <i>sudo ufw enable</i>.
+
+            </p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/deb13_vbox_inst10.png" class="kuvat" alt="kuva"> 
+        </div>
+
     <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">b-e) Oman palvelimen sekä verkkotunnuksen vuokraaminen</h2>
         
-        <h3 style="text-align: center;font-size: 130%;margin-bottom: 20px;margin-top: 30px;">Lokaali ympäristö:</h3>
+    <h3 style="text-align: center;font-size: 130%;margin-bottom: 20px;margin-top: 30px;">Paikallinen virtuaaliympäristö (deb_vm1):</h3>
+            <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
+                <li>OS: Debian 13 "Trixie"</li>
+                <li>RAM: 4 GB</li>
+                <li>CPU: 4 Core</li>
+                <li>Storage: 25 GB</li>
+            </ul>    
+    
+    <h3 style="text-align: center;font-size: 130%;margin-bottom: 20px;margin-top: 30px;">Lokaali ympäristö:</h3>
             <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
                 <li>OS: Windows 11 25H2</li> 
                 <li>CPU: Intel i7 14700KF</li>
                 <li>GPU: AMD RX 9070 XT</li>
                 <li>RAM: DDR5 32 GB</li>
             </ul>
-        <h3 style="text-align: center;font-size: 130%;margin-bottom: 20px;margin-top: 30px;">Virtuaaliympäristö (UpCloud):</h3>
+    <h3 style="text-align: center;font-size: 130%;margin-bottom: 20px;margin-top: 30px;">Virtuaaliympäristö (UpCloud):</h3>
             <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
                 <li>OS: Debian 13 "Trixie"</li>
                 <li>CPU: 1 Core</li>
@@ -85,64 +156,66 @@
                 <li>Storage: 10 GB</li>
             </ul>
 
-        <h3 style="text-align: center;font-size: 130%;margin-bottom: 20px;margin-top: 30px;">Virtuaaliympäristö (Paikallinen VirtualBox):</h3>
-            <ul style="text-align: center; list-style-position: inside; font-size: 105%; display: flex; flex-direction: column; gap: 5px; margin: 30px;"> 
-                <li>OS: Debian 13 "Trixie"</li>
-                <li>RAM: 4 GB</li>
-                <li>CPU: 4 Core</li>
-                <li>Storage: 25 GB</li>
-            </ul>
-
-        <p class="p2">
-        Aloitin siis valitsemalla kotimaisen "UpCloud"-pilvipalvelutarjoajan, sillä heidän kokeilujaksonsa kiinnitti huomioni. Ensikertalainen saisi 30 päivän kokeilussa 500 euron edestä krediittejä, joilla kustannetaan aloituspaketin kulut.
-        </p>
-        <p class="p2">
-        Rekisteröidyin UpCloud:n palveluun, syötin tarvittavat tiedot henkilöllisyyden varmistamiseen ja loin uuden palvelimen "Deploy now"-napilla. 
-        Tälle määritin sijainniksi "FI-HEL2"-datakeskuksen, sillä luulisin tällä olevan vähemmmän latenssia itselleni. Edullisin "Starter"-suunnitelma olisi juuri passeli yhdelle VPS-palvelimelle näin alkuun, sillä valitsemalla sopivan käyttöjärjestelmän olisivat myös laitteistovaatimukset "kevyitä".
-        </p>
+            <p class="p2">
+            Aloitin siis valitsemalla kotimaisen "UpCloud"-pilvipalvelutarjoajan, sillä heidän kokeilujaksonsa kiinnitti huomioni. 
+            Ensikertalainen saisi 30-päivän pituisessa kokeilussa 500 euron edestä krediittejä, joilla kustannettaisiin aloituspaketin kulut.
+            </p>
         
-        <div class="kuvat-container">
+            <p class="p2">
+            Rekisteröidyin UpCloud:n palveluun, syötin tarvittavat tiedot henkilöllisyyden varmistamiseen ja loin uuden palvelimen "Deploy now"-napilla. 
+            Tälle määritin sijainniksi "FI-HEL2"-datakeskuksen, sillä luulisin tällä olevan vähemmmän latenssia itselleni. Edullisin "Starter"-suunnitelma olisi juuri passeli yhdelle VPS-palvelimelle näin alkuun, sillä valitsemalla sopivan käyttöjärjestelmän olisivat myös laitteistovaatimukset "kevyitä".
+            </p>
+        
+        <div class="kuvat-contti">
             <img src="Kuvat/h0_kuva0.jpg" class="kuvat" alt="kuva"> 
             <img src="Kuvat/h0_kuva1.jpg" class="kuvat" alt="kuva">
         </div>
 
-        <p class="p2">
-        Valitun "Starter"-suunnitelman mukaan palvelimella olisi 10 GB:n verran tallennustilaa. Automaattisia varmuuskopioita en valinnut, sillä tarvetta ei ollut. 
-        Käyttöjärjestelmäksi Debian 13 (Trixie) ja verkkoasetuksista oletuksena päällä olevat asetukset.
-        </p>
+            <p class="p2">
+            Valitun "Starter"-suunnitelman mukaan palvelimella olisi 10 GB:n verran tallennustilaa. Automaattisia varmuuskopioita en valinnut, sillä tarvetta ei ollut. 
+            Käyttöjärjestelmäksi Debian 13 (Trixie) ja verkkoasetuksista oletuksena päällä olevat asetukset.
+            </p>
         
-        <div class="kuvat-container">
+        <div class="kuvat-contti">
             <img src="Kuvat/h0_kuva2.jpg" class="kuvat" alt="kuva"> 
             <img src="Kuvat/h0_kuva3.jpg" class="kuvat" alt="kuva">
         </div>
 
-        <p class="p2">
-        Virtuaalipalvelimen kirjautumistavaksi valittiin SSH-avaimet. Tämä tehtiin sekä koulukannettavani että koti-pöytäkoneeni Windows-järjestelmän Terminalissa komennolla "ssh-keygen". Molemmat avaimet tallensin UpCloud-SSH avainketjuun.
-        </p>
+            <p class="p2">
+            Virtuaalipalvelimen kirjautumistavaksi valittiin SSH-avaimet, jotka olin luonut "debadmin"-virtuaalikoneella . Tämä tehtiin sekä koulukannettavani että koti-pöytäkoneeni Windows-järjestelmän Terminalissa komennolla "ssh-keygen". Molemmat avaimet tallensin UpCloud-SSH avainketjuun.
+            </p>
         
-        <div class="kuvat-container">
+        <div class="kuvat-contti">
             <img src="Kuvat/h0_kuva4.jpg" class="kuvat" alt="kuva"> 
             <img src="Kuvat/h0_kuva5.jpg" class="kuvat" alt="kuva">
         </div>
 
-        <p class="p2">
-        Palvelin oli näin luotu, ja muodostin siihen yhteyden Terminalin kautta komennolla "ssh root@94.237.106.231" (ssh + käyttäjä + @ + palvelimen osoite). 
-        </p> 
-        <div class="kuvat-container">
+            <p class="p2">
+            Palvelin oli näin luotu, ja muodostin siihen yhteyden Terminalin kautta komennolla "ssh root@94.237.106.231" (ssh + käyttäjä + @ + palvelimen osoite). 
+            </p> 
+        
+        <div class="kuvat-contti">
             <img src="Kuvat/h0_kuva6.jpg" class="kuvat" alt="kuva"> 
         </div>
         
-        <p class="p2">
-        Lisäsin sinne uuden käyttäjän sudo-oikeuksilla komennolla "adduser piipo" ja "usermod -aG sudo piipo". 
-        Loin uuden "authorized_keys"-tiedoston tämän käyttäjän kotihakemistoon, ja talletin sinne oman kannettavani SSH-avaimen (nano authorized_keys).
-        Asensin päivitykset (sudo apt-get update, sudo apt-get upgrade), palomuurin (apt-get install ufw) sekä apache-webpalvelimen (sudo apt install apache). Konfiguroin palomuurin päästämään läpi 22/tcp-portin liikenteen, ja aktivoin sen komennolla "ufw enable".
-        </p>
+            <p class="p2">
+            Lisäsin sinne uuden käyttäjän sudo-oikeuksilla komennolla "adduser piipo" ja "usermod -aG sudo piipo". 
+            Loin uuden "authorized_keys"-tiedoston tämän käyttäjän kotihakemistoon, ja talletin sinne oman kannettavani SSH-avaimen (nano authorized_keys).
+            Asensin päivitykset (sudo apt-get update, sudo apt-get upgrade), palomuurin (apt-get install ufw) sekä apache-webpalvelimen (sudo apt install apache). 
+            Konfiguroin palomuurin päästämään läpi SSH:n oletusportin (22/tcp) liikenteen, ja aktivoin sen komennolla "ufw enable".
+            </p>
 
-        <p class="p2"> 
-        Tässä kohtaan meni jokin vikaan, sillä en päässyt kirjautumaan piipo-käyttäjällä palvelimelleni. Tätä en ehtinyt jäädä selvittelemään, joten suljin yhteyden.
-        </p>
+            <p class="p2"> 
+        
+            </p>
 
+    <h2 style="text-align: center;font-size: 150%;margin-bottom: 20px;margin-top: 40px;">Lähdeluettelo</h2>
+            <p class="p2">
+            T.Punnala, 2025: h1-installing-linux-md | Luettavissa https://github.com/punnalathomas/linux-course/blob/main/h1-installing-linux.md | Luettu 29.10.2026
 
+            </p>
+
+    
 </body>
 
 </html>

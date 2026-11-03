@@ -12,8 +12,8 @@
 
         @media (prefers-color-scheme: dark) { body { background: #1a1a1a; color: #ffffff; } }
         
-        h1, h2, h3, ul, p, .p2, .p3 {text-align: center;}
-        .p2, ul {max-width: 900px; margin: 10px auto; padding: 0 5px;}
+        h1, h2, h3, ul, p, .p2 {text-align: center;}
+        p, .p2, ul {max-width: 900px; margin: 10px auto; padding: 0 5px;}
 
         h1  {font-size: 250%;margin: 40px;}
         h2  {font-size: 150%;margin-top: 30px; margin-bottom: 20px;}
@@ -31,35 +31,33 @@
 
 <body>
 
-    <h1>    </h1>
+    <h1>Harjoitus 1 - Hei Ansiblen maailma</h1>
     
-    <h2>    </h2>
+    <h2>x) "Karvinen 2026: SSH public key"</h2>
     
-    <h3>    </h3>
         <ul> 
-            <li>    </li>
-            <li>    </li>
-            <li>    </li>
-        </ul>
-    
-    <h3>    </h3>
-        <ul> 
-            <li>    </li>
-            <li>    </li>
-        </ul>
-    
-    <h2>    </h2>
-        <ul> 
-            <li>    </li>
-            <li>    </li>
-            <li>    </li>
+            <li>SSH-avainparin julkisella avaimella todentaminen sujuvoittaa palvelimen tai laitteen käyttöä, normaalin "käyttäjätunnus + salasana" - yhdistelmän sijasta.</li>
+            <p>- Onko kuitenkin täysin ns. "riskitöntä" ?</p>
+            <li>Avainpari generoidaan kerran, ja uusi generoitu avainpari korvaa aina vanhan.</li>
+            <p>- <i>"ssh-keygen"</i> -komento luo avainparin. Jos käyttäjä on luonut jo aikaisemmin avainparin, ohjelma kysyy vanhan avainparin korvaamista uudella.</p>
+            <li><i>"ssh -v localhost"</i> - komento auttaa vianmäärityksessä tulostamalla lokin, joka kertoo esim. miksi SSH-yhteyttä ei voida muodostaa.</li>
+            
         </ul>
 
-    <h2>    </h2>
+    <h2>"Karvinen 2026: Hello Ansible"</h2>
+        <ul> 
+            <li>Artikkelissa ohjeistetaan Ansible-työkalun käytöstä. Tarkoituksena on siis määritellä haluttu lopputulos koodina, jonka Ansible toteuttaa vain tarvittaessa </li>
+            <li>Artikkelissa myös suositellaan SSH-todennuksen hyödyntämistä, jotta jokaisen "slave" - laitteen salasanaa ei tarvitse erikseen syöttää.</li>
+            <li><i>"sudo apt-get install ansible micro bash-completion tree"</i> Ansiblen, micro-tekstieditorin, "bash-completion" - laajennuksen ja "tree"-ohjelman (hakemistot sekä tiedostot "puuna") asentaminen.</li>
+            <li>"hosts.ini" - tiedostoon lisätään jokainen laite, jota halutaan hallita Ansiblella.</li>
+            <li>"ansible.cfg" - konfigurointitiedostoon voidaan lisätä maininta hosts-tiedostosta ("<i>inventory = hosts.ini</i>"), jotta Ansible osaa hakea laitteet automaattisesti tiedostosta. </li>
+        </ul>
+
+    <h2>a) Asenna Debian 13 paikallisesti </h2>
         
-        <p class="p2">  
+        <p class="p2"> <a href="https://piiponen.github.io/palvelinhallinta/h0.html#h1_linkki"> Linkki raporttiin</a> </p>  
         
-        </p>
+        
 
         <div class="kuvat-contti">
             <img src="Kuvat/    " class="kuvat" alt="kuva"> 

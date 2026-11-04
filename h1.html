@@ -58,6 +58,7 @@
         <p class="p2"> <a href="https://piiponen.github.io/palvelinhallinta/h0.html#h1_linkki"> Linkki raporttiin</a> </p>  
         
         <br>
+    
     <h2>b-c) SSH-demoni</h2>
         
         <p class="p2">
@@ -73,17 +74,19 @@
             <img src="Kuvat/h1_b-c1.png" class="kuvat" alt="kuva"> 
         </div>
 
+    <h2>d) Ansible</h2>
+    
         <p class="p2">
-
+        Eli asensin päivitykset sekä Ansible-työkalun jo jokseenkin tutulla komennolla <i>"sudo apt-get update && sudo apt-get install ansible"</i>. 
+        Loin uuden hakemiston sekä vaihdoin itseni sinne ("<i>mkdir ~/ansible/ && cd ~/ansible/ </i>").
         </p>
-
         <p class="p2">
-
+        Sitten (<i>"touch ansible.cfg| touch hosts.ini| touch site.yml| mkdir -p ~/ansible/roles/machine/tasks/ && touch roles/machine/tasks/main.yml"</i>). 
+        Tällä yhdistelmäkomennolla loin tarvittavat konfigurointi-, hostlista- ja roolinmääräys-tiedostot sekä hakemiston tehtäville, jotka suoritetaan "machine"-roolin omaavalle koneelle.
         </p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-
+            <img src="Kuvat/ansible_3" class="kuvat" alt="kuva"> 
         </div>
 
         <p class="p2">
@@ -91,7 +94,9 @@
         </p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
+            <img src="Kuvat/ansible_0" class="kuvat" alt="kuva">
+            <img src="Kuvat/ansible_1" class="kuvat" alt="kuva">
+            <img src="Kuvat/ansible_2" class="kuvat" alt="kuva">
         </div>
 
     <h2>    </h2>

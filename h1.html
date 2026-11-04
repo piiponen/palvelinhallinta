@@ -90,92 +90,43 @@
         </div>
 
         <p class="p2">
+        Ensikertalaisena määritin ainoastaan localhost-laitteen "hosts" -tiedostoon, sillä tällä pystyttiin kokeilemaan Ansiblen toimivuutta SSH-yhteyden välityksellä omaan virtuaalikoneeseen.
+        Lisäsin myös sen alle komennon, joka määritti Ansiblen käyttämään tiettyä Python3-versiota.
+        </p>
 
+        <div class="kuvat-contti">
+            <img src="Kuvat/ansible_4.png" class="kuvat" alt="kuva"> 
+        </div>
+
+        <p class="p2">
+        Lisäsin myös konfigurointitiedostoon "inventory = hosts.ini" - kohdan, jotta työkalu osaisi suoraan hakea käytössä olevat koneet tiedostosta.
+        </p>
+        <p class="p2">
+        Jotta jokaisen host-laitteen roolit voitaisiin erotella sekä myöntää eri tason laitteille eri oikeuksia, tulisi rooleja luoda monia ryhmien mukaan.
+        Tässä tehtävässä kokeiltiin Ansiblea, joten käytin vain luomaani "machine" - roolia, määrittäen sen jokaiselle laitteelle hosts.ini - listassa.
+        </p>
+        <p class="p2">
+        Lopuksi <i>~/ansible/roles/machine/tasks/main.yml</i> - tiedostoon iskettiin tehtävä, jonka Ansible oli tarkoitus suorittaa. Kyseinen tehtävä oli /tmp/machine-ansible - tiedoston luominen localhost - koneeseen, sisältönä "Hei maailma!" teksti.
+        Muutaman virheilmoituksen ratkomisen jälkeen totesin oppineeni että Ansible on erittäin tarkka välilyönneistä sekä väliviivoista.
         </p>
 
         <div class="kuvat-contti">
             <img src="Kuvat/ansible_0.png" class="kuvat" alt="kuva">
             <img src="Kuvat/ansible_1.png" class="kuvat" alt="kuva">
+        </div>
+        <p class="p2">
+        Lopuksi komennolla "<i>ssh localhost 'cat /tmp/machine-ansible'</i> " tulostettiin tiedoston viesti. 
+        </p>
+        <div class="kuvat-contti">
             <img src="Kuvat/ansible_2.png" class="kuvat" alt="kuva">
         </div>
-
-    <h2>    </h2>
-        
-    <h3>    </h3>
-        <ul> 
-            <li>    </li>
-
-        </ul>    
-    
-    <h3>    </h3>
-        <ul> 
-            <li>    </li> 
-        </ul>
-
-    <h3>    </h3>
-        <ul> 
-            <li>    </li>
-        </ul>
-
-        <p class="p2">
-
-        </p>
-        
-        <p class="p2">  
-            
-        </p>
-        
-        <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-        </div>
-
-        <p class="p2">
-
-        </p>
-        
-        <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-        </div>
-
-        <p class="p2">
- 
-        </p>
-        
-        <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-            <img src="Kuvat/    " class="kuvat" alt="kuva">
-        </div>
-
-        <p class="p2">
-
-        </p> 
-
-    <h2>    </h2>
-
-        <p class="p2">
-
-        </p>
-
-        <p class="p2">
-
-        </p>
-        
-        <p class="p2">
-
-        </p>
-
-        <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva">
-        </div>
-
-        <p class="p2">
-
-        </p>
 
     <h2>Lähdeluettelo</h2>
         
         <p class="lahteet">
-
+        Karvinen, T. 2026: Hello Ansible | Luettavissa: <a href="https://terokarvinen.com/hello-ansible/">Linkki</a> | Luettu 1.11.2026 <br>
+        Karvinen, T. 2026: SSH public key - Login without password | Luettavissa: <a href="https://terokarvinen.com/ssh-public-key-login-without-password/">Linkki</a> | Luettu 2.11.2026 <br>
+        Ansible Core Documentation. Interpreter Discovery | Luettavissa: <a href="https://docs.ansible.com/projects/ansible-core/2.19/reference_appendices/interpreter_discovery.html">Linkki</a> | Luettu 1.11.2026
         </p>
 
 </body>

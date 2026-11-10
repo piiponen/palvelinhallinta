@@ -12,18 +12,17 @@
 
         @media (prefers-color-scheme: dark) { body { background: #1a1a1a; color: #ffffff; } }
         
-        h1, h2, h3, ul, p, .p2, .p3 {text-align: center;}
-        .p2, ul {max-width: 900px; margin: 10px auto; padding: 0 5px;}
-
+        h1, h2, h3, h4, ul, p, .p2 {text-align: center;}
+        .p2, ul {max-width: 900px; margin: 20px auto; padding: 0 5px;}
+        
+        ul  {list-style-position: inside; font-size: 100%; display: flex; flex-direction: column; gap: 20px;}
         h1  {font-size: 250%;margin: 40px;}
         h2  {font-size: 150%;margin-top: 30px; margin-bottom: 20px;}
         h3  {font-size: 130%;margin: 40px;}
-        ul  {list-style-position: inside; font-size: 100%; display: flex; flex-direction: column; gap: 10px;}
+        h4  {font-size: 115%;margin: 20px;}
 
         .lahteet { margin: 20px;}
-
         .kuvat {width: 500px; max-width: 100%; height: auto; object-fit: contain; filter: brightness(0.90);}
-
         .kuvat-contti { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 30px auto; max-width: 1100px;}
         
     </style>
@@ -31,42 +30,71 @@
 
 <body>
 
-    <h1>    </h1>
+    <h1>Harjoitus 2 - Voileipä</h1>
     
-    <h2>    </h2>
+    <h2>x) Kiteytys: "Karvinen 2026: Sudo without password" </h2>
     
-    <h3>    </h3>
-        <ul> 
-            <li>    </li>
-            <li>    </li>
-            <li>    </li>
-        </ul>
-    
-    <h3>    </h3>
-        <ul> 
-            <li>    </li>
-            <li>    </li>
-        </ul>
-    
-    <h2>    </h2>
-        <ul> 
-            <li>    </li>
-            <li>    </li>
-            <li>    </li>
-        </ul>
+        <p class="p2">- Luodaan käyttäjäryhmä, joka automaattisesti myöntää superkäyttäjän oikeudet siihen kuuluville. Helpottaa mm. Ansiblen sekä järjestelmän käyttöä. </p>
+        <ul><li>Hyvä huomio salasanoista ("never use bad passwords, <b>even for a moment</b>")</li></ul>
+        <p class="p2">- Sudo-komennon "rikkominen" estää myös sen korjaamisen. Artikkelissa jätetään root-käyttäjä avattuna taustalle, jotta siihen voidaan palata jos jokin menee vikaan. </p>
+        <ul><li>Visudo toimii myös lisäturvana tälle, sillä se tarkistaa komentosyntaksin selvien virheiden varalta </li></ul>
 
-    <h2>    </h2>
+    <h2> x) Kiteytys: "Munroe 2006: xkcd 149: Sandwitch" </h2>
+    
+        <p class="p2">- Sudo-komentoa vastaan on turha pullikoida.</p>
+
+    <h2> x) Kiteytys: "Karvinen 2026: Passwordless Sudo with Ansible" </h2>    
+
+        <p class="p2">Ansiblella automatisoidaan: </p>
+            <ul>
+            <li>Sudo-käyttäjien ryhmän luominen (sudoless)</li>
+            <li>Käyttäjän luominen (antero)</li>
+            <li>Antero-käyttäjän SSH-avainparin päivittäminen todennettujen avainten listaan (authorized_keys)</li>
+            <li>Käyttäjän lisääminen "sudoless" - ryhmään, sekä "NOPASSWD" - säännön lisääminen "/etc/sudoers.d/sudoless" - tiedostoon, jotta käyttäjältä ei vaadita salasanaa.</li>
+            <li>Tiedoston lukitseminen muilta käyttäjiltä (poislukien root)</li>
+            </ul>
+        <p class="p2">Tärkeä sääntö: Ensin manuaalisesti, sitten automatisoidusti. Näin vältetään turhat virheet.</p>
         
-        <p class="p2">  
+    <h2>x) Kiteytys: "Ansiblen sisäänrakennettu dokumentaatio"</h2>
+
+    <h4>"copy" - Moduuli</h4>
+        <p class="p2">- Kopioi tiedoston tai hakemiston kohdelaitteeseen. Tarvittaessa moduuli siirtää myös tiedoston/hakemiston meta-tiedot (oikeudet, omistajuus, jne.) kohteeseen.</p>
+            <ul>
+            <li>"content": Muuttaa tai lisää "dest" - kohdassa määriteltyyn tiedostoon tietyn arvon. Jos tiedostoa ei ole, se luodaan samalla.</li>
+            <li>"dest": Absoluuttinen polku, johon tiedosto kopioidaan. Tarvittaessa luo hakemiston tiedostolle, jos sitä ei ennalta ole. </li>
+            <li>"src": Polku kopioitavaan tiedostoon/hakemistoon lokaalissa laitteessa. "/" - merkki lopussa vaikuttaa siihen, kopioidaanko koko hakemisto vaiko vaan sen sisältö. </li>
+            <li>"owner / group / mode": Kopioidun tiedoston omistajan, ryhmän sekä käyttöoikeuksien määritys. </li> 
+        </ul>
+        <p class="p2">Esimerkki  </p>
+            <div class="kuvat-contti"><img src="Kuvat/    " class="kuvat" alt="kuva"></div>
+
         
-        </p>
+    <h4>"apt" - Moduuli</h4>
+        <p class="p2">- Hallinnoi paketinhallinnan paketteja.</p>
+            <ul>
+            <li> "name": Asennettavan paketin nimi.</li>
+            <li>"state": Määritetyn paketin haluttu tila (mm. "latest" joka asentaa tai päivittää paketin, tai "absent" joka poistaa paketin)</li>
+            <li>"update_cache" vastine pakettien päivitysten hakemiselle (apt-get update).</li>
+        </ul>
+        <p class="p2">Esimerkki Apachen asentamisesta: </p>
+            <div class="kuvat-contti"><img src="Kuvat/    " class="kuvat" alt="kuva"></div>
 
-        <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-            <img src="Kuvat/    " class="kuvat" alt="kuva">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-        </div>
+        <h4>"file" - Moduuli</h4>
+        <p class="p2">- Hallinnoi tiedostoja, hakemistoja ja linkkejä, sekä tarvittaessa niitten oikeuksia.</p>
+            <ul>
+            <li>"path": Polku tiedostoon jota halutaan hallita.</li>
+            <li>"state": Mitä polulle halutaan ns. tehdä.</li>
+            <li>"recurse": Jos "state: directory", tämä asettaa omistajan, ryhmän ja oikeudet hakemiston sisällölle.</li>
+            <li>"src": Jos "state: link" tai "state: hard", asettaa linkille polun, johon se osoittaa.</li>
+            <li>"owner / group": Asettaa omistajan, ryhmän tai käyttöoikeudet.</li>
+            <li>"mode": Käyttöoikeudet numeromuodossa (Esim. '444' eli pelkästään lukuoikeudet)</li>
+            </ul>
+            <p class="p2">Esimerkki kun </p>
+        
+        <div class="kuvat-contti"><img src="Kuvat/    " class="kuvat" alt="kuva"></div> 
 
+    <h2> a-b) Sudoless sekä Ansible-tunnus</h2>
+        <p class="p2"> </p>
 
     <h2>Lähdeluettelo</h2>
         

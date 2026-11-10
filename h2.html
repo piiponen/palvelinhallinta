@@ -65,7 +65,7 @@
             <li>"src": Polku kopioitavaan tiedostoon/hakemistoon lokaalissa laitteessa. "/" - merkki lopussa vaikuttaa siihen, kopioidaanko koko hakemisto vaiko vaan sen sisältö. </li>
             <li>"owner / group / mode": Kopioidun tiedoston omistajan, ryhmän sekä käyttöoikeuksien määritys. </li> 
         </ul>
-        <p class="p2">Esimerkki  </p>
+        <p class="p2">Esimerkki tiedoston "foo.conf" kopioimisesta hakemistosta "/srv/myfiles/foo.conf" hakemistoon "/etc/". Tiedoston omistajalle (foo) sekä käyttäjäryhmälle (foo) asetetaan oikeudet '0644' (-rw-r--r--)</p>
             <div class="kuvat-contti"><img src="Kuvat/ansible_doc_copy.png" class="kuvat" alt="kuva"></div>
 
         
@@ -76,7 +76,7 @@
             <li>"state": Määritetyn paketin haluttu tila (mm. "latest" joka asentaa tai päivittää paketin, tai "absent" joka poistaa paketin)</li>
             <li>"update_cache" vastine pakettien päivitysten hakemiselle (apt-get update).</li>
         </ul>
-        <p class="p2">Esimerkki Apachen asentamisesta: </p>
+        <p class="p2">Esimerkki Apachen asentamisesta. "state: present" on tosin oletus, joten sen voi jättää pois ellei pakettia haluta päivittää (state: latest), tai poistaa (state: absent)  </p>
             <div class="kuvat-contti"><img src="Kuvat/ansible_doc_apt.png" class="kuvat" alt="kuva"></div>
 
         <h4>"file" - Moduuli</h4>
@@ -89,7 +89,7 @@
             <li>"owner / group": Asettaa omistajan, ryhmän tai käyttöoikeudet.</li>
             <li>"mode": Käyttöoikeudet numeromuodossa (Esim. '444' eli pelkästään lukuoikeudet)</li>
             </ul>
-            <p class="p2">Esimerkki kun </p>
+            <p class="p2">Esimerkki tiedoston omistajuuden, ryhmän ja oikeuksien muuttamisesta. '0644' (luku- ja kirjoitusoikeus omistajalle ja pelkkä lukuoikeus muille käyttäjille</p>
         
         <div class="kuvat-contti"><img src="Kuvat/ansible_doc_file.png" class="kuvat" alt="kuva"></div> 
 
@@ -98,8 +98,8 @@
         <p class="p2">Seuraavaksi lisäsin "sudoless" - tiedoston hakemistoon /etc/sudoers.d/ (sudo nano /etc/sudoers.d/sudoless), ja tähän sääntörivi "%sudoless ALL = (ALL) NOPASSWD: ALL" jotta ryhmän käyttäjät pääsevät toteuttamaan tiettyjä komentoja ilman jatkuvaa salasanan syöttämistä. </p>  
         <div class="kuvat-contti"><img src="Kuvat/ansible_sudo_user0.png" class="kuvat" alt="kuva"></div>
 
-        <p class="p2">Lopuksi vielä kopioin omat SSH-avainparit omalta käyttäjältä, jotta kirjautuminen toimisi ilman salasanaa mutkattomasti. Eli ssh piipo@osoite -> sudo cp ~/.ssh/authorized_keys /home/piipoble/.ssh/ </p>
-        
+        <p class="p2">Lopuksi vielä kopioin omat SSH-avainparit omalta käyttäjältä, jotta kirjautuminen toimisi ilman salasanaa mutkattomasti. Eli ensin yhteys: "ssh piipo@osoite" ja sitten "sudo cp ~/.ssh/authorized_keys /home/piipoble/.ssh/ " </p>
+            
     
     
     <h2>Lähdeluettelo</h2>

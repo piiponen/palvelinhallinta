@@ -95,10 +95,11 @@
 
     <h2> a-b) Sudoless-ryhmä sekä Ansible-tunnus</h2>
         <p class="p2">Aloitin luomalla uuden ryhmän superkäyttäjille (sudo groupadd sudoless), uuden käyttäjän Ansiblea varten (sudo adduser piipoble), sekä lisäämällä tämän käyttäjän ryhmään (sudo adduser piipoble sudoless). </p>
-            
+        <p class="p2">Seuraavaksi lisäsin "sudoless" - tiedoston hakemistoon /etc/sudoers.d/ (sudo nano /etc/sudoers.d/sudoless), ja tähän sääntörivi "%sudoless ALL = (ALL) NOPASSWD: ALL" jotta ryhmän käyttäjät pääsevät toteuttamaan tiettyjä komentoja ilman jatkuvaa salasanan syöttämistä. </p>  
         <div class="kuvat-contti"><img src="Kuvat/ansible_sudo_user0.png" class="kuvat" alt="kuva"></div>
+
+        <p class="p2">Lopuksi vielä kopioin omat SSH-avainparit omalta käyttäjältä, jotta kirjautuminen toimisi ilman salasanaa mutkattomasti. Eli ssh piipo@osoite -> sudo cp ~/.ssh/authorized_keys /home/piipoble/.ssh/ </p>
         
-        <p class="p2"> </p>
     
     
     <h2>Lähdeluettelo</h2>

@@ -90,8 +90,31 @@
                 <li>"mode": Käyttöoikeudet numeromuodossa (Esim. '444' eli pelkästään lukuoikeudet)</li>
                 </ul>
             <p class="p2">Esimerkki tiedoston omistajuuden, ryhmän ja oikeuksien muuttamisesta. '0644' (luku- ja kirjoitusoikeus omistajalle ja pelkkä lukuoikeus muille käyttäjille</p>
-            
-                <div class="kuvat-contti"><img src="Kuvat/ansible_doc_file.png" class="kuvat" alt="kuva"></div> 
+                <div class="kuvat-contti"><img src="Kuvat/ansible_doc_file.png" class="kuvat" alt="kuva"></div>
+        
+        <h4>"user" - Moduuli</h4>
+            <p class="p2">- Hallinnoi käyttäjiä sekä niitten ominaisuuksia. </p>
+                <ul>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li> 
+                </ul>
+            <p class="p2"> </p>
+            <div class="kuvat-contti"><img src="Kuvat/apache_doc_user.png" class="kuvat" alt="kuva"></div>
+
+        <h4>"posix_authorized_key" - Moduuli</h4>
+            <p class="p2">- </p>
+                <ul>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li> 
+                </ul>
+            <p class="p2"> </p>
+            <div class="kuvat-contti"><img src="Kuvat/apache_doc_authorized_key.png" class="kuvat" alt="kuva"></div>
 
     <h2> a) Sudoless-ryhmä sekä Ansible-tunnus</h2>
             <p class="p2">Aloitin luomalla uuden ryhmän superkäyttäjille (sudo groupadd sudoless), uuden käyttäjän Ansiblea varten (sudo adduser piipoble), sekä lisäämällä tämän käyttäjän ryhmään (sudo adduser piipoble sudoless). </p>
@@ -125,7 +148,7 @@
             <p class="p2">"ii" rivin alussa tarkoittaa asennettua. Ajettuani komennon uudestaan, mikään ei ollut muuttunut (ok=2, changed=0)</p>
 
     <h2>d) File</h2>
-        <p class="p2">Loin uuden roolin "tiedstt", ja sille oman tehtävätiedoston (roles/tiedstt/tasks/main.yml), johon lisäsin tarvittavat komennot. Lisäsin roolin "roles: " - listaan (site.yml) ja tein testiajon (ansible-playbook site.yml).</p>
+        <p class="p2">Loin uuden roolin "tiedstt", ja sille oman tehtävätiedoston (roles/tiedstt/tasks/main.yml), johon lisäsin tarvittavat komennot. Lisäsin roolin "roles: " - listaan (site.yml) ja tein testiajon (ansible-playbook site.yml)</p>
         <p class="p2">Tehtävä onnistui, ja ajoin sen toisen kerran nähdäkseni onko idempotentti. Oikeudet olivat "-rw-r--r-- 1 debadmin sudoless 110", kuten kuuluukin. </p>   
             <div class="kuvat-contti"><img src="Kuvat/ansible_copy_test0.png" class="kuvat" alt="kuva"></div>
             <div class="kuvat-contti"><img src="Kuvat/ansible_copy_test1.png" class="kuvat" alt="kuva"></div>

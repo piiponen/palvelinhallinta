@@ -122,21 +122,32 @@
             <div class="kuvat-contti"><img src="Kuvat/apt_install_ansible2.png" class="kuvat" alt="kuva"></div>
         <p class="p2">Tämäkin korjattiin muokkaamalla sisennystä (site.yml) ja lisäämällä "-K" sudoa varten testikomentoon (ansible-playbook site.yml -K). Tehtävän onnistuminen varmistettiin näin: </p>
             <div class="kuvat-contti"><img src="Kuvat/apt_install_ansible3.png" class="kuvat" alt="kuva"></div>
-            <p class="p2">"ii" rivin alussa tarkoittaa asennettua.</p>
+            <p class="p2">"ii" rivin alussa tarkoittaa asennettua. Ajettuani komennon uudestaan, mikään ei ollut muuttunut (ok=2, changed=0)</p>
+
+    <h2>d) File</h2>
+        <p class="p2">Loin uuden roolin "tiedstt", ja sille oman tehtävätiedoston (roles/tiedstt/tasks/main.yml), johon lisäsin tarvittavat komennot. Lisäsin roolin "roles: " - listaan (site.yml) ja tein testiajon (ansible-playbook site.yml).</p>
+        <p class="p2">Tehtävä onnistui, ja ajoin sen toisen kerran nähdäkseni onko idempotentti.</p>   
+            <div class="kuvat-contti"><img src="Kuvat/ansible_copy_test0.png" class="kuvat" alt="kuva"></div>
+            <div class="kuvat-contti"><img src="Kuvat/ansible_copy_test1.png" class="kuvat" alt="kuva"></div>
+            <div class="kuvat-contti"><img src="Kuvat/ansible_copy_test2.png" class="kuvat" alt="kuva"></div>
 
 
 
 
 
 
-
-
-
-    <h2>Lähdeluettelo</h2>
+    <h2><u>Lähdeluettelo</u></h2>
         
-        <p class="lahteet">
+        <p class="lahteet">Karvinen, T. 2026: Sudo without password | Luettavissa: <a href="https://terokarvinen.com/passwordless-sudo/">Linkki</a> | Luettu 10.11.2026</p>
+        <p class="lahteet">Karvinen, T. Passwordless Sudo with Ansible | Luettavissa: <a href="https://terokarvinen.com/passwordless-sudo-with-ansible/">Linkki</a> | Luettu 10.11.2026</p>
+        <p class="lahteet">Ansible Community Documentation - ansible.builtin.copy module  | Luettavissa: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/copy_module.html">Linkki</a> | Luettu 10.11.2026</p>
+        <p class="lahteet">Ansible Community Documentation - ansible.builtin.apt module | Luettavissa: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/apt_module.html">Linkki</a> | Luettu 10.11.2026</p>
+        <p class="lahteet">Ansible Community Documentation - ansible.builtin.user module  | Luettavissa: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/user_module.html">Linkki</a> | Luettu 11.11.2026</p>
+        <p class="lahteet">Ansible Community Documentation - ansible.posix.authorized_key module  | Luettavissa: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/posix/authorized_key_module.html">Linkki</a> | Luettu 11.11.2026</p>
+        <p class="lahteet">Ansible Community Documentation - ansible.builtin.file module | Luettavissa: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/file_module.html">Linkki</a> | Luettu 11.11.2026</p>
+                  
+        
 
-        </p>
 
 </body>
 

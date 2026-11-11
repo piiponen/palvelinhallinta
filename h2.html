@@ -76,7 +76,7 @@
                 <li>"state": Määritetyn paketin haluttu tila (mm. "latest" joka asentaa tai päivittää paketin, tai "absent" joka poistaa paketin)</li>
                 <li>"update_cache" vastine pakettien päivitysten hakemiselle (apt-get update).</li>
                 </ul>
-            <p class="p2">Esimerkki Apachen asentamisesta. "state: present" on tosin oletus, joten sen voi jättää pois ellei pakettia haluta päivittää (state: latest), tai poistaa (state: absent)  </p>
+            <p class="p2">- Esimerkki Apachen asentamisesta. "state: present" on tosin oletus, joten sen voi jättää pois ellei pakettia haluta päivittää (state: latest), tai poistaa (state: absent)  </p>
                 <div class="kuvat-contti"><img src="Kuvat/ansible_doc_apt.png" class="kuvat" alt="kuva"></div>
 
         <h4>"file" - Moduuli</h4>
@@ -89,31 +89,30 @@
                 <li>"owner / group": Asettaa omistajan, ryhmän tai käyttöoikeudet.</li>
                 <li>"mode": Käyttöoikeudet numeromuodossa (Esim. '444' eli pelkästään lukuoikeudet)</li>
                 </ul>
-            <p class="p2">Esimerkki tiedoston omistajuuden, ryhmän ja oikeuksien muuttamisesta. '0644' (luku- ja kirjoitusoikeus omistajalle ja pelkkä lukuoikeus muille käyttäjille</p>
+            <p class="p2">- Esimerkki tiedoston omistajuuden, ryhmän ja oikeuksien muuttamisesta. '0644' (luku- ja kirjoitusoikeus omistajalle ja pelkkä lukuoikeus muille käyttäjille</p>
                 <div class="kuvat-contti"><img src="Kuvat/ansible_doc_file.png" class="kuvat" alt="kuva"></div>
         
         <h4>"user" - Moduuli</h4>
             <p class="p2">- Hallinnoi käyttäjiä sekä niitten ominaisuuksia. </p>
                 <ul>
-                <li> </li>
-                <li> </li>
-                <li> </li>
-                <li> </li>
-                <li> </li> 
+                <li>"name": Käyttäjän tunnus jota hallinnoidaan. </li>
+                <li>"create_home": Luodaanko käyttäjälle kotihakemisto. </li>
+                <li>"comment": Käyttäjän kuvaus, esimerkiksi koko nimi. </li>
+                <li>"groups": Mihin ryhmään käyttäjä liitetään. </li>
+                <li>"shell": Käyttäjän oletuskomentotulkki. </li> 
+                <li>"state": Luodaanko (state: present) vai poistetaanko (state: absent) käyttäjä.</li>
+                <li>"system": Tehdäänkö käyttäjästä ns. "järjestelmäkäyttäjä" (jos asetettu "system: true")</li>
                 </ul>
-            <p class="p2"> </p>
+            <p class="p2">- Esimerkissä luodaan käyttäjä (johnd) sekä kotihakemisto (create_home: yes) </p>
             <div class="kuvat-contti"><img src="Kuvat/apache_doc_user.png" class="kuvat" alt="kuva"></div>
 
         <h4>"posix_authorized_key" - Moduuli</h4>
-            <p class="p2">- </p>
+            <p class="p2">- Lisää tai poistaa julkisen avaimen käyttäjän "authorized_key" - tiedostosta</p>
                 <ul>
-                <li> </li>
-                <li> </li>
-                <li> </li>
-                <li> </li>
-                <li> </li> 
+                <li>"user": Kohdekoneen käyttäjä, jonka SSH-avaintiedostoa muokataan (authorized_key) </li>
+                <li>"key": Julkinen SSH-avain, esimerkiksi merkkijonona (key: "{{ lookup('file', '/home/käyttäjä/.ssh/id_ed25519.pub') }}" ) </li>
                 </ul>
-            <p class="p2"> </p>
+            <p class="p2">Esimerkki julkisen avaimen hakemisesta lokaalin koneen hakemistosta (/home/käyttäjä/.ssh/id_rsa.pub) </p>
             <div class="kuvat-contti"><img src="Kuvat/apache_doc_authorized_key.png" class="kuvat" alt="kuva"></div>
 
     <h2> a) Sudoless-ryhmä sekä Ansible-tunnus</h2>

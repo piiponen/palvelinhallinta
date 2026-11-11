@@ -34,85 +34,94 @@
     
     <h2>x) Kiteytys: "Karvinen 2026: Sudo without password" </h2>
     
-        <p class="p2">- Luodaan käyttäjäryhmä, joka automaattisesti myöntää superkäyttäjän oikeudet siihen kuuluville. Helpottaa mm. Ansiblen sekä järjestelmän käyttöä. </p>
-        <ul><li>Hyvä huomio salasanoista ("never use bad passwords, <b>even for a moment</b>")</li></ul>
-        <p class="p2">- Sudo-komennon "rikkominen" estää myös sen korjaamisen. Artikkelissa jätetään root-käyttäjä avattuna taustalle, jotta siihen voidaan palata jos jokin menee vikaan. </p>
-        <ul><li>Visudo toimii myös lisäturvana tälle, sillä se tarkistaa komentosyntaksin selvien virheiden varalta </li></ul>
+            <p class="p2">- Luodaan käyttäjäryhmä, joka automaattisesti myöntää superkäyttäjän oikeudet siihen kuuluville. Helpottaa mm. Ansiblen sekä järjestelmän käyttöä. </p>
+            <ul><li>Hyvä huomio salasanoista ("never use bad passwords, <b>even for a moment</b>")</li></ul>
+            <p class="p2">- Sudo-komennon "rikkominen" estää myös sen korjaamisen. Artikkelissa jätetään root-käyttäjä avattuna taustalle, jotta siihen voidaan palata jos jokin menee vikaan. </p>
+            <ul><li>Visudo toimii myös lisäturvana tälle, sillä se tarkistaa komentosyntaksin selvien virheiden varalta </li></ul>
 
     <h2> x) Kiteytys: "Munroe 2006: xkcd 149: Sandwitch" </h2>
     
-        <p class="p2">- Sudo-komentoa vastaan on turha pullikoida.</p>
+            <p class="p2">- Sudo-komentoa vastaan on turha pullikoida.</p>
 
     <h2> x) Kiteytys: "Karvinen 2026: Passwordless Sudo with Ansible" </h2>    
 
-        <p class="p2">Ansiblella automatisoidaan: </p>
-            <ul>
-            <li>Sudo-käyttäjien ryhmän luominen (sudoless)</li>
-            <li>Käyttäjän luominen (antero)</li>
-            <li>Antero-käyttäjän SSH-avainparin päivittäminen todennettujen avainten listaan (authorized_keys)</li>
-            <li>Käyttäjän lisääminen "sudoless" - ryhmään, sekä "NOPASSWD" - säännön lisääminen "/etc/sudoers.d/sudoless" - tiedostoon, jotta käyttäjältä ei vaadita salasanaa.</li>
-            <li>Tiedoston lukitseminen muilta käyttäjiltä (poislukien root)</li>
-            </ul>
-        <p class="p2">Tärkeä sääntö: Ensin manuaalisesti, sitten automatisoidusti. Näin vältetään turhat virheet.</p>
+            <p class="p2">Ansiblella automatisoidaan: </p>
+                <ul>
+                <li>Sudo-käyttäjien ryhmän luominen (sudoless)</li>
+                <li>Käyttäjän luominen (antero)</li>
+                <li>Antero-käyttäjän SSH-avainparin päivittäminen todennettujen avainten listaan (authorized_keys)</li>
+                <li>Käyttäjän lisääminen "sudoless" - ryhmään, sekä "NOPASSWD" - säännön lisääminen "/etc/sudoers.d/sudoless" - tiedostoon, jotta käyttäjältä ei vaadita salasanaa.</li>
+                <li>Tiedoston lukitseminen muilta käyttäjiltä (poislukien root)</li>
+                </ul>
+            <p class="p2">Tärkeä sääntö: Ensin manuaalisesti, sitten automatisoidusti. Näin vältetään turhat virheet.</p>
         
     <h2>x) Kiteytys: "Ansiblen sisäänrakennettu dokumentaatio"</h2>
 
     <h4>"copy" - Moduuli</h4>
-        <p class="p2">- Kopioi tiedoston tai hakemiston kohdelaitteeseen. Tarvittaessa moduuli siirtää myös tiedoston/hakemiston meta-tiedot (oikeudet, omistajuus, jne.) kohteeseen.</p>
-            <ul>
-            <li>"content": Muuttaa tai lisää "dest" - kohdassa määriteltyyn tiedostoon tietyn arvon. Jos tiedostoa ei ole, se luodaan samalla.</li>
-            <li>"dest": Absoluuttinen polku, johon tiedosto kopioidaan. Tarvittaessa luo hakemiston tiedostolle, jos sitä ei ennalta ole. </li>
-            <li>"src": Polku kopioitavaan tiedostoon/hakemistoon lokaalissa laitteessa. "/" - merkki lopussa vaikuttaa siihen, kopioidaanko koko hakemisto vaiko vaan sen sisältö. </li>
-            <li>"owner / group / mode": Kopioidun tiedoston omistajan, ryhmän sekä käyttöoikeuksien määritys. </li> 
-        </ul>
-        <p class="p2">Esimerkki tiedoston "foo.conf" kopioimisesta hakemistosta "/srv/myfiles/foo.conf" hakemistoon "/etc/". Tiedoston omistajalle (foo) sekä käyttäjäryhmälle (foo) asetetaan oikeudet '0644' (-rw-r--r--)</p>
-            <div class="kuvat-contti"><img src="Kuvat/ansible_doc_copy.png" class="kuvat" alt="kuva"></div>
+            <p class="p2">- Kopioi tiedoston tai hakemiston kohdelaitteeseen. Tarvittaessa moduuli siirtää myös tiedoston/hakemiston meta-tiedot (oikeudet, omistajuus, jne.) kohteeseen.</p>
+                <ul>
+                <li>"content": Muuttaa tai lisää "dest" - kohdassa määriteltyyn tiedostoon tietyn arvon. Jos tiedostoa ei ole, se luodaan samalla.</li>
+                <li>"dest": Absoluuttinen polku, johon tiedosto kopioidaan. Tarvittaessa luo hakemiston tiedostolle, jos sitä ei ennalta ole. </li>
+                <li>"src": Polku kopioitavaan tiedostoon/hakemistoon lokaalissa laitteessa. "/" - merkki lopussa vaikuttaa siihen, kopioidaanko koko hakemisto vaiko vaan sen sisältö. </li>
+                <li>"owner / group / mode": Kopioidun tiedoston omistajan, ryhmän sekä käyttöoikeuksien määritys. </li> 
+                </ul>
+            <p class="p2">Esimerkki tiedoston "foo.conf" kopioimisesta hakemistosta "/srv/myfiles/foo.conf" hakemistoon "/etc/". Tiedoston omistajalle (foo) sekä käyttäjäryhmälle (foo) asetetaan oikeudet '0644' (-rw-r--r--)</p>
+                <div class="kuvat-contti"><img src="Kuvat/ansible_doc_copy.png" class="kuvat" alt="kuva"></div>
 
         
     <h4>"apt" - Moduuli</h4>
-        <p class="p2">- Hallinnoi paketinhallinnan paketteja.</p>
-            <ul>
-            <li> "name": Asennettavan paketin nimi.</li>
-            <li>"state": Määritetyn paketin haluttu tila (mm. "latest" joka asentaa tai päivittää paketin, tai "absent" joka poistaa paketin)</li>
-            <li>"update_cache" vastine pakettien päivitysten hakemiselle (apt-get update).</li>
-        </ul>
-        <p class="p2">Esimerkki Apachen asentamisesta. "state: present" on tosin oletus, joten sen voi jättää pois ellei pakettia haluta päivittää (state: latest), tai poistaa (state: absent)  </p>
-            <div class="kuvat-contti"><img src="Kuvat/ansible_doc_apt.png" class="kuvat" alt="kuva"></div>
+            <p class="p2">- Hallinnoi paketinhallinnan paketteja.</p>
+                <ul>
+                <li> "name": Asennettavan paketin nimi.</li>
+                <li>"state": Määritetyn paketin haluttu tila (mm. "latest" joka asentaa tai päivittää paketin, tai "absent" joka poistaa paketin)</li>
+                <li>"update_cache" vastine pakettien päivitysten hakemiselle (apt-get update).</li>
+                </ul>
+            <p class="p2">Esimerkki Apachen asentamisesta. "state: present" on tosin oletus, joten sen voi jättää pois ellei pakettia haluta päivittää (state: latest), tai poistaa (state: absent)  </p>
+                <div class="kuvat-contti"><img src="Kuvat/ansible_doc_apt.png" class="kuvat" alt="kuva"></div>
 
         <h4>"file" - Moduuli</h4>
-        <p class="p2">- Hallinnoi tiedostoja, hakemistoja ja linkkejä, sekä tarvittaessa niitten oikeuksia.</p>
-            <ul>
-            <li>"path": Polku tiedostoon jota halutaan hallita.</li>
-            <li>"state": Mitä polulle halutaan ns. tehdä.</li>
-            <li>"recurse": Jos "state: directory", tämä asettaa omistajan, ryhmän ja oikeudet hakemiston sisällölle.</li>
-            <li>"src": Jos "state: link" tai "state: hard", asettaa linkille polun, johon se osoittaa.</li>
-            <li>"owner / group": Asettaa omistajan, ryhmän tai käyttöoikeudet.</li>
-            <li>"mode": Käyttöoikeudet numeromuodossa (Esim. '444' eli pelkästään lukuoikeudet)</li>
-            </ul>
+            <p class="p2">- Hallinnoi tiedostoja, hakemistoja ja linkkejä, sekä tarvittaessa niitten oikeuksia.</p>
+                <ul>
+                <li>"path": Polku tiedostoon jota halutaan hallita.</li>
+                <li>"state": Mitä polulle halutaan ns. tehdä.</li>
+                <li>"recurse": Jos "state: directory", tämä asettaa omistajan, ryhmän ja oikeudet hakemiston sisällölle.</li>
+                <li>"src": Jos "state: link" tai "state: hard", asettaa linkille polun, johon se osoittaa.</li>
+                <li>"owner / group": Asettaa omistajan, ryhmän tai käyttöoikeudet.</li>
+                <li>"mode": Käyttöoikeudet numeromuodossa (Esim. '444' eli pelkästään lukuoikeudet)</li>
+                </ul>
             <p class="p2">Esimerkki tiedoston omistajuuden, ryhmän ja oikeuksien muuttamisesta. '0644' (luku- ja kirjoitusoikeus omistajalle ja pelkkä lukuoikeus muille käyttäjille</p>
-        
-        <div class="kuvat-contti"><img src="Kuvat/ansible_doc_file.png" class="kuvat" alt="kuva"></div> 
+            
+                <div class="kuvat-contti"><img src="Kuvat/ansible_doc_file.png" class="kuvat" alt="kuva"></div> 
 
     <h2> a) Sudoless-ryhmä sekä Ansible-tunnus</h2>
-        <p class="p2">Aloitin luomalla uuden ryhmän superkäyttäjille (sudo groupadd sudoless), uuden käyttäjän Ansiblea varten (sudo adduser piipoble), sekä lisäämällä tämän käyttäjän ryhmään (sudo adduser piipoble sudoless). </p>
-        <p class="p2">Seuraavaksi lisäsin "sudoless" - tiedoston hakemistoon /etc/sudoers.d/ (sudo nano /etc/sudoers.d/sudoless), ja tähän sääntörivi "%sudoless ALL = (ALL) NOPASSWD: ALL" jotta ryhmän käyttäjät pääsevät toteuttamaan tiettyjä komentoja ilman jatkuvaa salasanan syöttämistä. </p>  
-        <div class="kuvat-contti"><img src="Kuvat/ansible_sudo_user0.png" class="kuvat" alt="kuva"></div>
+            <p class="p2">Aloitin luomalla uuden ryhmän superkäyttäjille (sudo groupadd sudoless), uuden käyttäjän Ansiblea varten (sudo adduser piipoble), sekä lisäämällä tämän käyttäjän ryhmään (sudo adduser piipoble sudoless). </p>
+            <p class="p2">Seuraavaksi lisäsin "sudoless" - tiedoston hakemistoon /etc/sudoers.d/ (sudo nano /etc/sudoers.d/sudoless), ja tähän sääntörivi "%sudoless ALL = (ALL) NOPASSWD: ALL" jotta ryhmän käyttäjät pääsevät toteuttamaan tiettyjä komentoja ilman jatkuvaa salasanan syöttämistä. </p>  
+                <div class="kuvat-contti"><img src="Kuvat/ansible_sudo_user0.png" class="kuvat" alt="kuva"></div>
 
-        <p class="p2">Lopuksi vielä kopioin omat SSH-avainparit omalta käyttäjältä, jotta kirjautuminen toimisi ilman salasanaa mutkattomasti. Eli ensin yhteys: "ssh piipo@osoite" ja sitten "sudo cp ~/.ssh/authorized_keys /home/piipoble/.ssh/ " </p>
+<p class="p2">Lopuksi vielä kopioin omat SSH-avainparit omalta käyttäjältä, jotta kirjautuminen toimisi ilman salasanaa mutkattomasti. Eli ensin yhteys: "ssh piipo@osoite" ja sitten "sudo cp ~/.ssh/authorized_keys /home/piipoble/.ssh/ " </p>
             
     <h2>b) Ansiblella tehty salasanaton kirjautuminen </h2>
-        <p class="p2">Seuraavaksi toteutettiin sama automatisoituna Ansiblella. Eli  </p>
-        <p class="p2"></p>
-    
-        <div class="kuvat-contti"><img src="Kuvat/SSHuser_with_ansible0.png" class="kuvat" alt="kuva"></div>
+            <p class="p2">Seuraavaksi toteutettiin sama automatisoituna Ansiblella, osittain käyttäen apuna ohjeistusta (https://terokarvinen.com/passwordless-sudo-with-ansible/) </p>
+            <p class="p2">Eli muokkasin site.yml - tiedostoa lisäten sinne uuden käyttäjäni roolin, sekä "become: true" - kohdan jotta Ansible yrittää toteuttaa tehtävät sudona.</p>
+            <p class="p2">Jotta voitaisiin kokeilla toimivuutta ensin, kommentoin pois hosts.ini - tiedostosta SSH:lla yhdistämisen omaan palvelimeen.</p>
+                <div class="kuvat-contti"><img src="Kuvat/SSHuser_with_ansible2.png" class="kuvat" alt="kuva"></div>
+                <div class="kuvat-contti"><img src="Kuvat/SSHuser_with_ansible1.png" class="kuvat" alt="kuva"></div>
+            <p class="p2">Lopuksi vielä uusi hakemisto roolille "piipoble" (mkdir ~/ansible/roles/piipoble/tasks -p) ja sinne uusi main.yml - tehtävätiedosto, johon seuraavanlainen rimpsu: </p>
+                <div class="kuvat-contti"><img src="Kuvat/SSHuser_with_ansible0.png" class="kuvat" alt="kuva"></div>
+            <p class="p2">Sitten testiajo komennolla (ansible-playbook site.yml -K), salasanan syöttö ja tulosteen perusteella (ok=6, changed=5) tehtävä onnistui. Varmistin asian tarkistamalla käyttäjän ryhmät (groups piipoble), sekä muodostamalla SSH-yhteyden (ssh piipoble@localhost)</p>
+                <div class="kuvat-contti"><img src="Kuvat/SSHuser_with_ansible4.png" class="kuvat" alt="kuva"></div>
+                <div class="kuvat-contti"><img src="Kuvat/SSHuser_with_ansible5.png" class="kuvat" alt="kuva"></div>
 
+    <h2>c) Paketinasennus Ansiblella</h2>
+        
+        <p class="p2">Muokkasin piipoble-roolin tehtävätiedostoa sekä site.yml - tiedostoa seuraavanlaisesti: </p>
+            <div class="kuvat-contti"><img src="Kuvat/apt_install_ansible0.png" class="kuvat" alt="kuva"></div>
 
-
-
-
-
-
-
+        <p class="p2">Testiajo samalla komennolla kuin aikaisemmin, ja Ansible tulosti virheet: </p>
+            <div class="kuvat-contti"><img src="Kuvat/apt_install_ansible1.png" class="kuvat" alt="kuva"></div>
+            <div class="kuvat-contti"><img src="Kuvat/apt_install_ansible2.png" class="kuvat" alt="kuva"></div>
+        <p class="p2">Tämäkin korjattiin muokkaamalla sisennystä (site.yml) ja lisäämällä "-K" sudoa varten testikomentoon (ansible-playbook site.yml -K). Tehtävän onnistuminen varmistettiin näin: </p>
+            <div class="kuvat-contti"><img src="Kuvat/apt_install_ansible3.png" class="kuvat" alt="kuva"></div>
 
 
 

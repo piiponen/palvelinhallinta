@@ -119,12 +119,15 @@
             <img src="Kuvat/a-b_apache_nginx_0.png" class="kuvat" alt="kuva"> 
         </div>
 
-        <p>Sitten oletuksena olevan etusivun vaihto Apachessa, jonka toteutin nimeämällä tiedoston uudelleen (Jos sen jonain päivänä haluaisikin palauttaa). Sudotellen <code>sudo mv /var/www/html/index.html /var/www/html/index.html.a2default</code>, sitten oman lisäys <code>sudo nano /var/www/html/index.html</code></p>
+    <h3>Apache2 </h3>
+
+        <p>Seuraavaksi vaihdettiin Apachen oletusetusivu, joka onnistui varsin helposti nimeämällä etusivutiedosto ".a2default" - muotoon. Sudotellen <code>sudo mv /var/www/html/index.html /var/www/html/index.html.a2default</code>, sitten oman lisäys <code>sudo nano /var/www/html/index.html</code></p>
         <p>Oikeuksien ja omistajuuden vaihtaminen itselle <code>sudo chown piipo:piipo /var/www/html/index.html</code> sekä <code>chmod 666 /var/www/html/index.html</code>, jotta tiedostoa pääsisi muokkaamaan kaikki käyttäjät ilman sudottelua</p>
 
         <div class="kuvat-contti">
             <img src="Kuvat/a-b_apache_nginx_1.png" class="kuvat" alt="kuva">
-            <img src="Kuvat/a-b_apache_nginx_2.png" class="kuvat" alt="kuva"> 
+            <img src="Kuvat/a-b_apache_nginx_2.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/a-b_apache_nginx_3.png" class="kuvat" alt="kuva"> 
         </div>
 
 

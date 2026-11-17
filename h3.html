@@ -110,10 +110,9 @@
 
         <p><code>sudo apt-get update && sudo apt-get upgrade -y</code>
 
-    <h3>Sitten Apache2- sekä nginx-paketit</h3>
-
+        <p>Sitten Apache2- sekä nginx-paketit: </p>
         <p><code>sudo apt-get install apache2 -y</code> ja <code>sudo apt-get install nginx -y</code></p>
-        <p>Sitten nginx pois käytöstä komennolla <code>sudo systemctl disable nginx --now</code>, ja Apache käyntiin heti komennolla <code>sudo systemctl start apache2.service --now</code></p>
+        <p>Poistettiin tilapäisesti Nginx käytöstä komennolla <code>sudo systemctl disable nginx --now</code>, ja otettiin Apache käyttöön heti komennolla <code>sudo systemctl start apache2.service --now</code></p>
         <p>Tarkistetaan että molemmat on asennettu <code>systemctl status apache2.service</code>ja <code>systemctl status nginx.service</code></p>
 
         <div class="kuvat-contti">
@@ -128,14 +127,6 @@
             <img src="Kuvat/a-b_apache_nginx_2.png" class="kuvat" alt="kuva"> 
         </div>
 
-    <h2>b) </h2>    
-        
-        <p> </p>
-
-        <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-        
-        </div>
 
     <h2>c) </h2>    
         

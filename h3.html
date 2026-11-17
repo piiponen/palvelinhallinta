@@ -119,7 +119,7 @@
             <img src="Kuvat/a-b_apache_nginx_0.png" class="kuvat" alt="kuva"> 
         </div>
 
-    <h3>Apache2 </h3>
+    <h3>Apache</h3>
 
         <p>Seuraavaksi vaihdettiin Apachen oletusetusivu, joka onnistui varsin helposti nimeämällä etusivutiedosto ".a2default" - muotoon. Sudotellen <code>sudo mv /var/www/html/index.html /var/www/html/index.html.a2default</code>, sitten oman lisäys <code>sudo nano /var/www/html/index.html</code></p>
         <p>Oikeuksien ja omistajuuden vaihtaminen itselle <code>sudo chown piipo:piipo /var/www/html/index.html</code> sekä <code>chmod 666 /var/www/html/index.html</code>, jotta tiedostoa pääsisi muokkaamaan kaikki käyttäjät ilman sudottelua</p>
@@ -129,6 +129,22 @@
             <img src="Kuvat/a-b_apache_nginx_2.png" class="kuvat" alt="kuva">
             <img src="Kuvat/a-b_apache_nginx_3.png" class="kuvat" alt="kuva"> 
         </div>
+
+    <h3>Nginx</h3>
+
+        <p>Ensin apache2.service seis ja pois käytöstä <code>sudo systemctl stop apache2.service && sudo systemctl disable apache2.service</code></p> 
+        <p>Ja nginx.service käyttöön <code>sudo systemctl enable nginx.service --now && sudo systemctl start nginx.service</code></p>
+        <p>Lopuksi uudelleenkäynnistys <code>sudo reboot</code></p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/a-b_apache_nginx_4.png" class="kuvat" alt="kuva"> 
+        </div>        
+
+        <p>Molemmat web-palvelimet käyttävät samaa tiedostoa hakemistossa <code>/var/www/html/index.html</code> etusivulle, joten muokkasin hieman tiedostoa nähdäkseni että se toimii.</p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/a-b_apache_nginx_5.png" class="kuvat" alt="kuva"> 
+        </div>        
 
 
     <h2>c) </h2>    

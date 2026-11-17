@@ -8,20 +8,25 @@
     <title>Palvelinten hallinta-tehtävät</title>
     <style>
         
-        :root { color-scheme: light dark; }
+        :root       { color-scheme: light dark; }
 
-        body { font-family: arial, verdana, sans-serif; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 10px; overflow-wrap: anywhere; }
+        body        { font-family: arial, verdana, sans-serif; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 10px; overflow-wrap: anywhere; }
 
         h1, h2, h3, ul, p { text-align: center; }
-        p, ul { margin: 20px 0; }
-        h1 + h2 { border-top: none; padding-top: 0;}
+        p, ul       { margin: 20px 0; }
+        h1 + h2     { border-top: none; padding-top: 0;}
                 
-        ul  { list-style-position: inside; display: flex; flex-direction: column; gap: 20px; }
-        h1  { font-size: 250%; margin: 50px 0; padding-bottom: 10px; border-bottom: 2px solid; }
-        h2  { font-size: 150%; margin: 40px 0 20px; padding-top: 30px; border-top: 3px solid gray; }
-        h3  { font-size: 120%; margin: 40px 0 30px; }
+        ul          { list-style-position: inside; display: flex; flex-direction: column; gap: 20px; }
+        h1          { font-size: 250%; margin: 50px 0; padding-bottom: 10px; border-bottom: 2px solid; }
+        h2          { font-size: 150%; margin: 40px 0 20px; padding-top: 30px; border-top: 3px solid gray; }
+        h3          { font-size: 120%; margin: 40px 0 30px; }
         
-        code { font-family: monospace; background: rgba(128, 128, 128, 0.2); padding: 1px 5px; border-radius: 3px; }
+        code        { font-family: monospace; background: rgba(128, 128, 128, 0.2); padding: 1px 5px; border-radius: 3px; }
+
+        .hostit     { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        .host       { border: 2px solid #999; border-radius: 8px; padding: 8px 14px; text-align: center; }
+        .host h3    { margin-top: 0; }
+        .host ul    { list-style: none; padding: 0; margin: 0; }
 
         .kuvat-contti { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 25px; margin: 40px auto; }
         .kuvat { width: auto; max-width: min(500px, 100%); height: auto; }
@@ -33,15 +38,48 @@
 
 <body>
 
-    <h1>Harjoitus :</h1>
+    <h1>Harjoitus 3: Demoni</h1>
+
+    <div class="hostit">
     
-    <h2>x) </h2>
+        <div class="host">
+            <h3>Paikallinen virtuaaliympäristö (deb_vm1):</h3>
+                <ul> 
+                    <li>OS: Debian 13 "Trixie"</li>
+                    <li>RAM: 4 GB</li>
+                    <li>CPU: 4 Core</li>
+                    <li>Storage: 25 GB</li>
+                </ul>    
+        </div>
+        
+        <div class="host">
+            <h3>Paikallinen ympäristö:</h3>
+                <ul> 
+                    <li>OS: Windows 11 25H2</li> 
+                    <li>CPU: Intel i7 14700KF</li>
+                    <li>GPU: AMD RX 9070 XT</li>
+                    <li>RAM: DDR5 32 GB</li>
+                </ul>
+        </div>
+        
+        <div class="host">
+            <h3>UpCloud-virtuaalipalvelin:</h3>
+                <ul> 
+                    <li>OS: Debian 13 "Trixie"</li>
+                    <li>CPU: 1 Core</li>
+                    <li>RAM: 1 GB</li>
+                    <li>Storage: 10 GB</li>
+                </ul>
+        </div>
+    </div>
+    
+    <h2>x) Tiivistys: "Karvinen 2026: Apache installed with Ansible" </h2>
     
         <p>- </p>
 
-    <h2>x) </h2>
+    <h2>x) Tiivistys: Ansible Community Documentation</h2>
             
-    <h3> </h3>
+    <h3>"Handlers"</h3>
         
         <p>- </p>
             <ul>
@@ -49,17 +87,47 @@
 
             </ul>
 
-    <h2>y) </h2>
-
-    <h2>a) </h2>    
+    <h3>"Service" - moduuli</h3>
         
-        <p> </p>
+        <p>- </p>
+            <ul>
+                <li> </li>
+
+            </ul>
+
+    <h2>y) Artikkeli: "The Active Directory Era Is Finally Over" (<a href="https://news.ycombinator.com/item?id=50517815">Linkki</a>)</h2>
+            
+            <ul>
+                <li> </li>
+
+            </ul>
+
+    <h2>a-b) Apache2- sekä nginx - webpalvelimien asennus</h2>    
+        
+        <p>Tarkoituksena oli siis asentaa web-palvelin omaan VPS-palvelimeen. Tämän olin jo tehnyt ensimmäisessä harjoituksessa, joten raportointi on tehty osittain ulkomuistista</p>
+    
+    <h3>Ensin rutiinipäivitykset: </h3>
+
+        <p><code>sudo apt-get update && sudo apt-get upgrade -y</code>
+
+    <h3>Sitten Apache2- sekä nginx-paketit</h3>
+
+        <p><code>sudo apt-get install apache2 -y</code> ja <code>sudo apt-get install nginx -y</code></p>
+        <p>Sitten nginx pois käytöstä komennolla <code>sudo systemctl disable nginx --now</code>, ja Apache käyntiin heti komennolla <code>sudo systemctl start apache2.service --now</code></p>
+        <p>Tarkistetaan että molemmat on asennettu <code>systemctl status apache2.service</code>ja <code>systemctl status nginx.service</code></p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/ " class="kuvat" alt="kuva"> 
-
+            <img src="Kuvat/a-b_apache_nginx_0.png" class="kuvat" alt="kuva"> 
         </div>
-    
+
+        <p>Sitten oletuksena olevan etusivun vaihto Apachessa, jonka toteutin nimeämällä tiedoston uudelleen (Jos sen jonain päivänä haluaisikin palauttaa). Sudotellen <code>sudo mv /var/www/html/index.html /var/www/html/index.html.a2default</code>, sitten oman lisäys <code>sudo nano /var/www/html/index.html</code></p>
+        <p>Oikeuksien ja omistajuuden vaihtaminen itselle <code>sudo chown piipo:piipo /var/www/html/index.html</code> sekä <code>chmod 666 /var/www/html/index.html</code>, jotta tiedostoa pääsisi muokkaamaan kaikki käyttäjät ilman sudottelua</p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/a-b_apache_nginx_1.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/a-b_apache_nginx_2.png" class="kuvat" alt="kuva"> 
+        </div>
+
     <h2>b) </h2>    
         
         <p> </p>

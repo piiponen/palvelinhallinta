@@ -147,12 +147,14 @@
         </div>        
 
 
-    <h2>c) </h2>    
+    <h2>c) Automatisoitu nginx - asennus Ansiblella</h2>    
         
-        <p> </p>
+        <p>Sitten nginxin asennus Ansiblella. Koeajo ennen varsinaista suoritusta, joten muokataan site.yml - tiedostoon <code>hosts: localhost</code> ja uusi rooli <code>roles: - nginx</code></p>
+        <p>Seuraavaksi lisätään tehtävähakemistot nginx - asennukseen: <code>mkdir -p ~/ansible/roles/nginx/{fls,hndlrs,tsks}</code></p>
+
 
         <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
+            <img src="Kuvat/c_auto_nginx1.png" class="kuvat" alt="kuva"> 
 
         </div>
 
@@ -170,9 +172,12 @@
 
     <h2>Lähdeluettelo</h2>
         
-        <p class="lahteet"> </p>
+        <p>nginx documentation - Beginner's Guide | Luettavissa: <a href="https://nginx.org/en/docs/beginners_guide.html">Linkki</a> | Luettu 17.11.26</p>
+        <p>Karvinen, T. 2026. Apache installed with Ansible - quick notes | Luettavissa: <a href="https://terokarvinen.com/apache-ansible/">Linkki</a> | Luettu 17.11.26</p>
+        <p>Ansible Community Documentation - Handlers: running operations on change | Luettavissa: <a href="https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html">Linkki</a> | Luettu 16.11.26</p>
+        <p>Ansible Community Documentation - ansible.builtin.service module | Luettavissa: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html">Linkki</a> | Luettu 16.11.26</p>
+        <p>Corrarello, N. 2026. The Active Directory Era Is Finally Over. Infisical | Luettavissa: <a href="https://news.ycombinator.com/item?id=50517815">Linkki</a> | Luettu: 17.11.26</p>
 
-    
 </body>
 
 </html>

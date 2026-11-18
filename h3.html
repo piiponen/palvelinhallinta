@@ -196,15 +196,26 @@
     <h3>Testit</h3>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/c_error0" class="kuvat" alt="kuva">
+            <img src="Kuvat/c_error0.png" class="kuvat" alt="kuva">
         </div>
     
-        <p>Ensimmäinen testiajo tuotti virheen. Hetken mietiskelyn jälkeen tajusin, ettei localhost-laitteessa ollut muita käyttäjiä kuin "debadmin" tietysti, joten muokkasin nginx/tasks/main.yml käyttäjät oikein.</p>
+        <p>Ensimmäinen testiajo tuotti virheen. Hetken mietiskelyn jälkeen tajusin, ettei localhost-laitteessa ollut muita käyttäjiä kuin "debadmin" tietysti, joten muokkasin nginx/tasks/main.yml käyttäjän nimen oikein ja ajoin uudelleen.</p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/c_succee0" class="kuvat" alt="kuva">
-            <img src="Kuvat/c_succee1" class="kuvat" alt="kuva">
-            <img src="Kuvat/c_succee2" class="kuvat" alt="kuva">
+            <img src="Kuvat/c_succee0.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/c_succee1.png" class="kuvat" alt="kuva">
+        </div>
+
+        <p>Sehän toimii. Kävin tarkistamassa onko uudessa testihakemistossa index.html <code>cat /var/www/testi/index.html</code>, sekä onko nginx käynnissä <code>systemctl status nginx</code></p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/c_succee2.png" class="kuvat" alt="kuva">
+        </div>
+
+        <p>Koska nginx oli asennettu edellisessä tehtävässä, poistin sen asennuksen (<code>sudo apt purge nginx</code>) ja ajoin vielä kerran.</p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/c_succee3.png" class="kuvat" alt="kuva">
         </div>
 
     <h2>Lähdeluettelo</h2>

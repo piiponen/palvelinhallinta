@@ -150,25 +150,62 @@
     <h2>c) Automatisoitu nginx - asennus Ansiblella</h2>    
         
         <p>Sitten nginxin asennus Ansiblella. Koeajo ennen varsinaista suoritusta, joten muokataan site.yml - tiedostoon <code>hosts: localhost</code> ja uusi rooli <code>roles: - nginx</code></p>
-        <p>Seuraavaksi lisätään tehtävähakemistot nginx - asennukseen: <code>mkdir -p ~/ansible/roles/nginx/{fls,hndlrs,tsks}</code></p>
-
-
+        
         <div class="kuvat-contti">
             <img src="Kuvat/c_auto_nginx1.png" class="kuvat" alt="kuva"> 
-
         </div>
 
-        <p> </p>
+        <p>Seuraavaksi lisätään tehtävähakemistot nginx - asennukseen: <code>mkdir -p ~/ansible/roles/nginx/{files,handlers,tasks}</code></p>
+            <ul>
+                <li><code>fls</code>: Kopioitavat tiedostot (testi.conf, index.html)</li>
+                <li><code>hndlrs</code>: Handler - tehtävä (nginx uudelleenkäynnistys)</li>
+                <li><code>tsks</code>: Varsinaiset tehtävät (Asennus, tiedostokopiointi, käyttöönotto, "handler" - aktivointi)</li>
+            </ul>
 
-    <h2>d) </h2>    
-        
-        <p> </p>
+        <p>Lisätään "hndlrs" ja "tsks" - hakemistoon tehtävätiedostot (main.yml) sekä "fls" konfigurointi- ja etusivutiedostot (testi.conf sekä index.html)</p>
+        <p>Hakemistorakenne näyttää nyt tältä: </p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva">
-
+            <img src="Kuvat/c_auto_nginx0.png" class="kuvat" alt="kuva"> 
+        </div>
+    
+        <div class="kuvat-contti">
+            <img src="Kuvat/c_auto_nginx4.png" class="kuvat" alt="kuva"> 
         </div>
 
+        <ul>
+            <li><code>rstrt nginx</code>: Handler-tehtävä, joka suoritetaan <code>notify: rstrt nginx</code> - koodinpätkällä</li>
+        </ul>
+    
+        <div class="kuvat-contti">
+            <img src="Kuvat/c_auto_nginx5.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/c_auto_nginx6.png" class="kuvat" alt="kuva">
+        </div>
+
+        <ul>
+            <li><code></code>: </li>
+            <li><code></code>: </li>
+            <li><code></code>: </li>
+            <li><code></code>: </li>
+            <li><code></code>: </li>
+
+        </ul>        
+
+
+
+
+        <p>index.html ja testi.conf</p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/c_auto_nginx3.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/c_auto_nginx2.png" class="kuvat" alt="kuva">
+        </div>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/c_error0" class="kuvat" alt="kuva">
+        </div>
+    
+        <p>Ensimmäinen testiajo tuotti virheen. Hetken mietiskelyn jälkeen tajusin ettei localhost-laitteessa ollut muita käyttäjiä kuin "debadmin" tietysti, joten muokkasin nginx/tasks/main.yml käyttäjät oikein.</p>
 
     <h2>Lähdeluettelo</h2>
         

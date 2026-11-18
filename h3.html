@@ -75,32 +75,39 @@
     
     <h2>x) Tiivistys: "Karvinen 2026: Apache installed with Ansible" </h2>
     
-        <p>- </p>
+        <ul>
+            <li>Muistiinpanot Apache2 - paketin asentamisesta Ansiblella. Komentojen syntaksia voidaan soveltaa myös muihin pakettitehtäviin</li>
+            <li>Vaatimuksena toimiva Ansible</li>
+            <li>Asennetaan "apache2" - paketti (<code>state: present</code>- rivi on oletuksena, rivin voi poistaa jos niin tahtoo)</li>
+        </ul>
 
     <h2>x) Tiivistys: Ansible Community Documentation</h2>
             
     <h3>"Handlers"</h3>
         
-        <p>- </p>
-            <ul>
-                <li> </li>
+        <p>Handler toteuttaa tehtävän ainoastaan silloin, kun kaksi ehtoa on täyttynyt: </p>
 
-            </ul>
+        <ul>
+            <li>Tehtävätiedostossa on erikseen rivi: <code>notify: "handler-tehtävä"</code></li>
+            <li>Tehtävän ajaminen on muuttanut jotain (<code>changed=</code> on vähintään 1)</li>
+        </ul>
 
     <h3>"Service" - moduuli</h3>
         
-        <p>- </p>
+        <p>- Hallitsee orjan/orjien prosesseja. Toimii alustavasti jokaisen järjestelmän prosessihallinnan kanssa. </p>
             <ul>
-                <li> </li>
+                <li><code>enabled: true/false</code>: Suoritetaanko prosessi järjestelmän käynnistyksessä</li>
+                <li><code>name: "nimi"</code>: Prosessin nimi</li>
+                <li><code>state: reloaded/restarted/started/stopped</code>: Prosessin käynnistys uudelleen (restarted), konfigurointitiedostojen uudelleenlataus (reloaded), käynnistys/pysäytys kokonaan (started/stopped)</li>
+                <li>Esimerkki: HTTPD-prosessin käynnistys, jos ei käynnissä valmiiksi (state: started)</li>
 
             </ul>
 
     <h2>y) Artikkeli: "The Active Directory Era Is Finally Over" (<a href="https://news.ycombinator.com/item?id=50517815">Linkki</a>)</h2>
             
-            <ul>
-                <li> </li>
-
-            </ul>
+            <p>- Active Directory oli aikanaan hyvä ratkaisu laitteiden keskitettyyn identiteettihallintaan, sillä se vastasi tehokkaasti kolmeen tarpeeseen: Mitkä identiteetit/laitteet ovat olemassa, kuka hyväksyy ne "domainiin", ja minkälainen vaikutusalue kullakin on.</p>
+            <p>- Monissa ryhmissä tärkeät todentamistiedot ovat edelleen .env-tiedostoissa tai ns. "kovakoodattu" konfigurointitiedostoon.</p>
+            <p>- Tekoälyagentit nykypäivänä vaativat omat identiteettinsä sekä käytäntönsä erillään muista, jotta ne voivat toimia esim. eri turvallisuustasoilla.</p>
 
     <h2>a-b) Apache2- sekä nginx - webpalvelimien asennus</h2>    
         
@@ -210,13 +217,13 @@
 
         <div class="kuvat-contti">
             <img src="Kuvat/c_succee2.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/c_succee4.png" class="kuvat" alt="kuva">
         </div>
 
-        <p>Koska nginx oli asennettu edellisessä tehtävässä, poistin sen asennuksen (<code>sudo apt purge nginx</code>) ja ajoin vielä kerran.</p>
+        <p>Koska nginx oli asennettu edellisessä tehtävässä, poistin sen asennuksen (<code>sudo apt purge nginx</code>) ja ajoin vielä kerran. Lopputulos oli odotettu.</p>
 
         <div class="kuvat-contti">
             <img src="Kuvat/c_succee3.png" class="kuvat" alt="kuva">
-            <img src="Kuvat/c_succee4.png" class="kuvat" alt="kuva">
         </div>
 
     <h2>Lähdeluettelo</h2>

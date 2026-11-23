@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+    <title>Palvelinten hallinta-tehtävät</title>
+    <style>
+        
+        :root       { color-scheme: light dark; }
+
+        body        { font-family: arial, verdana, sans-serif; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 10px; overflow-wrap: anywhere; }
+
+        h1, h2, h3, ul, p { text-align: center; }
+        p, ul       { margin: 20px 0; }
+        h1 + h2     { border-top: none; padding-top: 0;}
+                
+        ul          { list-style-position: inside; display: flex; flex-direction: column; gap: 20px; }
+        h1          { font-size: 250%; margin: 50px 0; padding-bottom: 10px; border-bottom: 2px solid; }
+        h2          { font-size: 150%; margin: 40px 0 20px; padding-top: 30px; border-top: 3px solid gray; }
+        h3          { font-size: 120%; margin: 40px 0 30px; }
+        
+        code        { font-family: monospace; background: rgba(128, 128, 128, 0.2); padding: 1px 5px; border-radius: 3px; }
+
+        .hostit     { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        .host       { border: 2px solid #999; border-radius: 8px; padding: 6px 14px; text-align: center; }
+        .host h3    { margin-top: 0; }
+        .host ul    { list-style: none; padding: 0; margin: 0; }
+
+        .kuvat-contti { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 25px; margin: 40px auto; }
+        .kuvat { width: auto; max-width: min(500px, 100%); height: auto; }
+
+        @media (prefers-color-scheme: dark) { .kuvat { filter: brightness(0.9); } }
+        
+    </style>
+</head>
+
+<body>
+
+    <h1>Harjoitus 4: Pizza Fantasia</h1>
+
+    <div class="hostit">
+    
+        <div class="host">
+            <h3>Paikallinen virtuaaliympäristö (deb_vm1):</h3>
+                <ul> 
+                    <li>OS: Debian 13 "Trixie"</li>
+                    <li>RAM: 4 GB</li>
+                    <li>CPU: 4 Core</li>
+                    <li>Storage: 25 GB</li>
+                </ul>    
+        </div>
+        
+        <div class="host">
+            <h3>Paikallinen ympäristö:</h3>
+                <ul> 
+                    <li>OS: Windows 11 25H2</li> 
+                    <li>CPU: Intel i7 14700KF</li>
+                    <li>GPU: AMD RX 9070 XT</li>
+                    <li>RAM: DDR5 32 GB</li>
+                </ul>
+        </div>
+        
+        <div class="host">
+            <h3>UpCloud-virtuaalipalvelin:</h3>
+                <ul> 
+                    <li>OS: Debian 13 "Trixie"</li>
+                    <li>CPU: 1 Core</li>
+                    <li>RAM: 1 GB</li>
+                    <li>Storage: 10 GB</li>
+                </ul>
+        </div>
+    </div>
+    
+    <h2>x) Tiivistys: Configuration Management of Distributed Systems over Unreliable and Hostile Networks (Karvinen 2023) </h2>
+            
+    <h3>4.12.1 "Size and Complexity of Some DSLs"</h3>
+            <ul>
+                <li>Väitöskirjan osio esittelee lyhyesti keskitetyn palvelinhallinnan työkalut "Salt" sekä "Puppet"</li>
+                <li>Testialustana käytetty Ubuntu LTS - versiota 18.04 "Bionic"</li>
+                <li>Salt CM Tool 2017.7.4: 510 ominaisuutta</li>
+                <li>Puppet CM Tool: 113 ominaisuutta</li>
+            </ul>
+    
+    <h3>4.12.2 "Use of DSL Functions in Case Configuration"</h3>
+        <p>Vaikkakin käytettävissä olevien funktioiden määrä keskitetyssä hallinnassa on suuri, hallinta voidaan toteuttaa tehokkaasti pienelläkin määrällä perustason funktioita sekä komentoja</p>
+        <p>Käytetyimmät funktiot olivat:</p>
+            <ul>
+                <li><code>case</code> </li>
+                <li><code>file</code> </li>
+                <li><code>package</code> </li>
+                <li><code>exec</code> </li>
+                <li><code>augeas </code> </li>
+                <li><code>service </code> </li> 
+                <li><code>pam::changeparm</code> </li>
+                <li><code>service</code> </li>
+            </ul>
+
+    <h3>4.12.3.1 "Dependencies Between Main Functions"</h3>
+
+            <ul>
+                <li> </li>
+            </ul>
+
+    <h2>a) PostgreSQL-demoni</h2>
+            
+        <p>Valitsin postgreSQL- työkalun, jota käytetään relaatiotietokantojen hallinnointiin. Aloitin siis poistamalla edellisen pakettiasennuksen (<code>sudo apt-get purge postgresql</code>), ja suorittamalla rutiinipäivitykset (<code>sudo apt-get update && sudo apt-get upgrade -y</code>)</p>
+        <p>Sitten asennus uudestaan (<code>sudo apt-get install postgresql -y</code>), käyttöönotto heti (<code>sudo systemctl start postgresql --now</code>) sekä tarkistus (<code>sudo systemctl status postgresql</code>)</p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4_a_0" class="kuvat" alt="kuva">
+        </div>
+        
+    <h2>b) PostgreSQL automatisoitu asennus Ansiblella</h2>    
+        
+        <p> </p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/ " class="kuvat" alt="kuva"> 
+
+        </div>
+
+
+
+    
+    <h2>c) PostgreSQL:n konfigurointi-tiedoston muuttaminen</h2>    
+        
+        <p> </p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
+        
+        </div>
+
+
+
+
+    <h2>d-e) Asetustiedoston rikkominen, korjauttaminen, sekä idempotentti</h2>    
+        
+        <p> </p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
+
+        </div>
+
+        <p> </p>
+
+
+
+
+    <h2>e) </h2>    
+        
+        <p> </p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/    " class="kuvat" alt="kuva">
+
+        </div>
+
+
+    <h2>Lähdeluettelo</h2>
+        
+        <p>Karvinen, T. 2016 | Install PostgreSQL on Ubuntu - New user and database in 3 commands | Luettavissa: <a href="https://terokarvinen.com/2016/install-postgresql-on-ubuntu-new-user-and-database-in-3-commands/">Linkki</a> | Luettu 22.11.26</p>
+        <p>Karvinen, T. 2016 | PostgreSQL Install and One Table Database - SQL CRUD tutorial for Ubuntu | Luettavissa: <a href="https://terokarvinen.com/2016/postgresql-install-and-one-table-database-sql-crud-tutorial-for-ubuntu/">Linkki</a> | Luettu 22.11.26</p>
+    
+</body>
+
+</html>

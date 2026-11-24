@@ -117,50 +117,96 @@
             <img src="Kuvat/h4a1.png" class="kuvat" alt="kuva">
         </div>
 
-    <h2>b) PostgreSQL asennus Ansiblella</h2>    
+    <h2>b) PostgreSQL asennus sekä päivitykset Ansiblella</h2>    
         
-        <p>Sitten sama Ansibleen sovitettuna, aloittaen uuden roolin lisäämisestä (<code>site.yml</code>) sekä host-laitteiden järjestämisestä ryhmiin (<code>hosts.ini</code>)</p>
+        <p>Tarkoitus oli toteuttaa sama lopputulos Ansiblella, joten aloitin:</p>
+
+        <p>Järjestämällä hostit ryhmiin (<code>hosts.ini</code>)</p>
+        
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4b0.png" class="kuvat" alt="kuva">
+        </div>
+
+        <p>Sitten muokkaamalla roolit kuntoon (<code>site.yml</code>)</p>
         
         <div class="kuvat-contti">
             <img src="Kuvat/h4b1.png" class="kuvat" alt="kuva">
-            <img src="Kuvat/h4b0.png" class="kuvat" alt="kuva">
+        </div>
+        
+        <p>Luomalla uuden tiedoston päivityksien asentamiselle (<code>touch /home/debadmin/ansible/update.yml</code>)</p>
+        
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4b2.png" class="kuvat" alt="kuva">
         </div>
 
         <p>Luodaan hakemistot (<code>mkdir -p /home/debadmin/ansible/roles/postgresql/tasks/ /home/debadmin/ansible/roles/update/tasks/</code>)</p>
         <p>sekä tehtävätiedostot (<code>touch roles/postgresql/tasks/main.yml roles/update/tasks/main.yml</code>)</p>
 
-        <p>Ja <code>main.yml</code> - tiedostoihin seuraavanlaiset tehtävät: 
+        <p>Ja tiedostoihin seuraavanlaiset tehtävät: </p>
         
         <div class="kuvat-contti">
-            <img src="Kuvat/h4b2.png" class="kuvat" alt="kuva">
             <img src="Kuvat/h4b3.png" class="kuvat" alt="kuva">
-
+            <img src="Kuvat/h4b4.png" class="kuvat" alt="kuva">
         </div>
             
-        <p>ja sitten testiajo (<code>ansible-playbook site.yml</code>)</p>
-
-
-
-    
-    <h2>c) PostgreSQL:n konfigurointi-tiedoston muuttaminen</h2>    
+        <p>Sitten koeajo päivityksien hakemisesta sekä asentamisesta "testrun" - ryhmän hosteihin (<code>ansible-playbook update.yml -l testrun</code>), joka näytti toimivan. </p>
+ 
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4b5.png" class="kuvat" alt="kuva"> 
+        </div>        
         
-        <p> </p>
+        <p>Ajetaan sama kahdesti uudestaan, tällä kertaa kaikille listatuille hosteille (<code>ansible-playbook update.yml</code>)</p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
+            <img src="Kuvat/h4b6.png" class="kuvat" alt="kuva"> 
+        </div>   
+    
+        <p>Sitten tosiaan vielä se varsinainen asennus (<code>ansible-playbook site.yml -l testrun</code>), joka onnistui idempotenttina</p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4b7.png" class="kuvat" alt="kuva"> 
+        </div>
+    
+    <h2>c) PostgreSQL:n asetustiedoston muuttaminen</h2>    
         
+        <p>Sitten hakemistot tiedostoille sekä handler-tehtäville (<code>mkdir -p roles/postgresql/files roles/postgresql/handlers</code>) ja sinne tiedostot (<code>touch roles/postgresql/handlers/main.yml roles/postgresql/files/customtest.conf </code>)</p>
+
+        <ul>
+            <li><code>files/customtest.conf</code>: Asetuksista vaihtuu <code>max_connections = 100</code> arvoon <code>105</code></li>
+            <li><code>tasks/main.yml</code>: Muutokset tehtävätiedostoon (Kopioi <code>customtest.conf</code>, vaihda oikeudet postgres-käyttäjälle, uudelleenkäynnistä psql)</li>
+            <li><code>handlers/main.yml</code>: postgresql:n uudelleenkäynnistys</li>
+        </ul>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4c0.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4c1.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4c2.png" class="kuvat" alt="kuva">
         </div>
 
+        <p>Ja koeajo ensin <code>testrun</code> - ryhmän hosteilla:</p>
 
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4c3.png" class="kuvat" alt="kuva">
+        </div>
 
+        <p>Virhettä pukkasi. Kävin tutkailemassa <code>handlers/main.yml</code> - tiedostoa, josta paljastui pari kirjoitusvirhettä. Ne korjaamalla uusintatestiajo meni läpi onnistuneesti, mutta mikään ei muuttunut (<code>changed=0</code> -> Handler ei aktivoitunut -> <code>customtest.conf</code> - asetukset eivät astuneet voimaan)</p>
+        <p>Korjaantui käynnistämällä postgresSQL uudestaan (<code>sudo systemctl restart postgresql</code>)</p>
+        <p>Ja hakemalla tiedon postgres-komennolla (<code>sudo -u postgres psql -c "SHOW max_connections;"</code>)</p>
+
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4c4.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4c5.png" class="kuvat" alt="kuva">
+        </div>
 
     <h2>d-e) Asetustiedoston rikkominen, korjauttaminen, sekä idempotentti</h2>    
         
-        <p> </p>
+        <p>Seuraavaksi poistin koko PostgreSQL - asennuksen (<code>sudo apt purge postgresql postgresql-17 postgresql-client-common postgresql-common-dev postgresql-client-17 postgresql-common</code>), sekä hakemiston rippeet (<code>sudo rm -rf /etc/postgresql/</code>)</p>
+        <p>Ajettiin tuttu komento uudestaan (<code>ansible-playbook site.yml -l testrun</code>), ja sitten tarkistus (<code>sudo -u postgres psql -c "SHOW max_connections;"</code>) </p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/    " class="kuvat" alt="kuva"> 
-
+            <img src="Kuvat/h4de0.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4de1.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4de2.png" class="kuvat" alt="kuva">
         </div>
 
         <p> </p>

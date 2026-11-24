@@ -109,22 +109,35 @@
         <p>Sitten asennus uudestaan (<code>sudo apt-get install postgresql -y</code>), käyttöönotto heti (<code>sudo systemctl start postgresql --now</code>) sekä tarkistus (<code>sudo systemctl status postgresql</code>)</p>
 
         <div class="kuvat-contti">
-            <img src="Kuvat/h4_a_0.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4a0.png" class="kuvat" alt="kuva">
         </div>
 
-        <p>Lopuksi noudattaen ohjeistusta (Karvinen 2016: "Install PostgreSQL on Ubuntu" sekä "PostgreSQL Install and One Table Database") sekä hieman poiketen siitä, luotiin käyttäjä työkaluun(<code>sudo -u postgres createuser debadmin</code>), sekä testitietokanta joka määriteltiin käyttäjän omistukseen(<code>sudo -u postgres createdb -O debadmin debadmin</code>)</p>
+        <p>Lopuksi noudattaen ohjeistusta (Karvinen 2016: "Install PostgreSQL on Ubuntu" & "PostgreSQL Install and One Table Database") sekä hieman poiketen siitä, luotiin käyttäjä (<code>sudo -u postgres createuser debadmin</code>) sekä testitietokanta (<code>sudo -u postgres createdb -O debadmin debadmin</code>), joka määriteltiin käyttäjän "debadmin" omistukseen</p>
         <div class="kuvat-contti">
-            <img src="Kuvat/h4_a_1.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4a1.png" class="kuvat" alt="kuva">
         </div>
 
-    <h2>b) PostgreSQL automatisoitu asennus Ansiblella</h2>    
+    <h2>b) PostgreSQL asennus Ansiblella</h2>    
         
-        <p> </p>
-
+        <p>Sitten sama Ansibleen sovitettuna, aloittaen uuden roolin lisäämisestä (<code>site.yml</code>) sekä host-laitteiden järjestämisestä ryhmiin (<code>hosts.ini</code>)</p>
+        
         <div class="kuvat-contti">
-            <img src="Kuvat/ " class="kuvat" alt="kuva"> 
+            <img src="Kuvat/h4b1.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4b0.png" class="kuvat" alt="kuva">
+        </div>
+
+        <p>Luodaan hakemistot (<code>mkdir -p /home/debadmin/ansible/roles/postgresql/tasks/ /home/debadmin/ansible/roles/update/tasks/</code>)</p>
+        <p>sekä tehtävätiedostot (<code>touch roles/postgresql/tasks/main.yml roles/update/tasks/main.yml</code>)</p>
+
+        <p>Ja <code>main.yml</code> - tiedostoihin seuraavanlaiset tehtävät: 
+        
+        <div class="kuvat-contti">
+            <img src="Kuvat/h4b2.png" class="kuvat" alt="kuva">
+            <img src="Kuvat/h4b3.png" class="kuvat" alt="kuva">
 
         </div>
+            
+        <p>ja sitten testiajo (<code>ansible-playbook site.yml</code>)</p>
 
 
 
